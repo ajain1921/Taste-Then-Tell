@@ -12,8 +12,8 @@
 | Member1     |  arafol2@illinois.edu  |
 | Member2     |  Miguel Fernandez      |
 | Member2     |  miguelf4@illinois.edu |
-| Member3     |                        |
-| Member3     |                        |
+| Member3     |  Aditya Jain           |
+| Member3     |  adityaj5@illinois.edu |
 
 ## Project Information
 
