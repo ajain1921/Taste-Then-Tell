@@ -24,4 +24,4 @@
 | Video Link  |      link_to_video     |
 
 ## Project Summary
-Please put your project summary here
+Taste Then Tell is a web app that will allow any university student to find reviews about the meals served in their school’s dining halls. Students and university dining services will be able to discover what foods are a hit or miss or how dishes compare across halls. Our web app will include user authentication, search functionality, a review system, and aggregated dish ratings. 
