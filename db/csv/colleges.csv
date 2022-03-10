@@ -83,23 +83,23 @@ university_id,location,name
 110361,Riverside,California Baptist University
 110404,Pasadena,California Institute of Technology
 110413,Thousand Oaks,California Lutheran University
-110422,San Luis Obispo,"California Polytechnic State University, San Luis Obispo"
-110529,Pomona,"California State Polytechnic University, Pomona"
+110422,San Luis Obispo,California Polytechnic State University, San Luis Obispo
+110529,Pomona,California State Polytechnic University, Pomona
 111188,Vallejo,California State University Maritime Academy
-110486,Bakersfield,"California State University, Bakersfield"
-441937,Camarillo,"California State University, Channel Islands"
-110538,Chico,"California State University, Chico"
-110547,Carson,"California State University, Dominguez Hills"
-110574,Hayward,"California State University, East Bay"
-110565,Fullerton,"California State University, Fullerton"
-110583,Long Beach,"California State University, Long Beach"
-110592,Los Angeles,"California State University, Los Angeles"
-409698,Marina,"California State University, Monterey Bay"
-110608,Los Angeles,"California State University, Northridge"
-110617,Sacramento,"California State University, Sacramento"
-110510,San Bernardino,"California State University, San Bernardino"
-366711,San Marcos,"California State University, San Marcos"
-110495,Turlock,"California State University, Stanislaus"
+110486,Bakersfield,California State University, Bakersfield
+441937,Camarillo,California State University, Channel Islands
+110538,Chico,California State University, Chico
+110547,Carson,California State University, Dominguez Hills
+110574,Hayward,California State University, East Bay
+110565,Fullerton,California State University, Fullerton
+110583,Long Beach,California State University, Long Beach
+110592,Los Angeles,California State University, Los Angeles
+409698,Marina,California State University, Monterey Bay
+110608,Los Angeles,California State University, Northridge
+110617,Sacramento,California State University, Sacramento
+110510,San Bernardino,California State University, San Bernardino
+366711,San Marcos,California State University, San Marcos
+110495,Turlock,California State University, Stanislaus
 111948,Orange,Chapman University
 112260,Claremont,Claremont McKenna College
 112075,Irvine,Concordia University Irvine
@@ -113,7 +113,6 @@ university_id,location,name
 115409,Claremont,Harvey Mudd College
 115728,Oakland,Holy Names University
 115755,Arcata,Humboldt State University
-laccd,Los Angeles,Los Angeles Community College District
 117946,Los Angeles,Loyola Marymount University
 118693,Atherton,Menlo College
 118888,Oakland,Mills College
@@ -146,17 +145,17 @@ laccd,Los Angeles,Los Angeles Community College District
 123800,Chula Vista,Southwestern College
 243744,Stanford,Stanford University
 488800,Stockton,Teachers College of San Joaquin
-110635,Berkeley,"University of California, Berkeley"
-110644,Davis,"University of California, Davis"
-110398,San Francisco,"University of California, Hastings College of Law"
-110653,Irvine ,"University of California, Irvine"
-110662,Los Angeles,"University of California, Los Angeles"
-445188,Merced,"University of California, Merced"
-110671,Riverside,"University of California, Riverside"
-110680,San Diego,"University of California, San Diego"
-110699,San Francisco,"University of California, San Francisco"
-110705,Santa Barbara,"University of California, Santa Barbara"
-110714,Santa Cruz,"University of California, Santa Cruz"
+110635,Berkeley,University of California, Berkeley
+110644,Davis,University of California, Davis
+110398,San Francisco,University of California, Hastings College of Law
+110653,Irvine ,University of California, Irvine
+110662,Los Angeles,University of California, Los Angeles
+445188,Merced,University of California, Merced
+110671,Riverside,University of California, Riverside
+110680,San Diego,University of California, San Diego
+110699,San Francisco,University of California, San Francisco
+110705,Santa Barbara,University of California, Santa Barbara
+110714,Santa Cruz,University of California, Santa Cruz
 117140,La Verne,University of La Verne
 121691,Redlands,University of Redlands
 122436,San Diego,University of San Diego
@@ -341,7 +340,7 @@ laccd,Los Angeles,Los Angeles Community College District
 137281,Palatka,St. Johns River State College
 137078,St. Petersburg,St. Petersburg College
 137476,Miami Gardens,St. Thomas University
-135391,Bradenton,"State College of Florida, Manatee-Sarasota"
+135391,Bradenton,State College of Florida, Manatee-Sarasota
 137546,DeLand,Stetson University
 44903808,Fort Lauderdale,Strayer University at Fort Lauderdale
 137120,Sarasota,Suncoast Technical College
@@ -646,8 +645,8 @@ laccd,Los Angeles,Los Angeles Community College District
 159391,Baton Rouge,Louisiana State University
 159382,Alexandria,Louisiana State University Alexandria
 159407,Eunice,Louisiana State University Eunice
-159373,New Orleans,"Louisiana State University Health Sciences Center, New Orleans"
-435000,Shreveport,"Louisiana State University Health Sciences Center, Shreveport"
+159373,New Orleans,Louisiana State University Health Sciences Center, New Orleans
+435000,Shreveport,Louisiana State University Health Sciences Center, Shreveport
 159416,Shreveport,Louisiana State University Shreveport 
 159647,Ruston,Louisiana Tech University
 159656,New Orleans,Loyola University New Orleans
@@ -707,9 +706,9 @@ laccd,Los Angeles,Los Angeles Community College District
 164155,Annapolis,United States Naval Academy
 161873,Baltimore,University of Baltimore
 163338,Princess Anne,University of Maryland Eastern Shore
-163259,Baltimore,"University of Maryland, Baltimore"
-163268,Catonsville,"University of Maryland, Baltimore County"
-163286,College Park,"University of Maryland, College Park"
+163259,Baltimore,University of Maryland, Baltimore
+163268,Catonsville,University of Maryland, Baltimore County
+163286,College Park,University of Maryland, College Park
 164216,Chestertown,Washington College
 164447,Springfield,American International College
 164465,Amherst,Amherst College
@@ -838,7 +837,7 @@ laccd,Los Angeles,Los Angeles Community College District
 175315,White Bear Lake,Century College
 174747,St. Joseph,College of Saint Benedict and Saint John's University
 173300,Moorhead,Concordia College at Moorhead
-173328,St. Paul,"Concordia University, St. Paul"
+173328,St. Paul,Concordia University, St. Paul
 174862,Saint Bonifacius,Crown College
 173416,Rosemount,Dakota County Technical College
 380368,Cloquet,Fond du Lac Tribal and Community College
@@ -858,7 +857,7 @@ laccd,Los Angeles,Los Angeles Community College District
 175263,Winona,Minnesota State College Southeast
 173559,Fergus Falls,Minnesota State Community and Technical College
 174358,Moorhead,Minnesota State University Moorhead
-173920,Mankato,"Minnesota State University, Mankato"
+173920,Mankato,Minnesota State University, Mankato
 173638,Granite Falls,Minnesota West Community and Technical College
 174428,Bloomington,Normandale Community College
 174437,Minneapolis,North Central University
@@ -884,7 +883,7 @@ laccd,Los Angeles,Los Angeles Community College District
 174251,Morris,University of Minnesota Morris
 456959,Rochester,University of Minnesota Rochester
 174066,Minneapolis,University of Minnesota Twin Cities
-174491,St. Paul,"University of Northwestern, St. Paul"
+174491,St. Paul,University of Northwestern, St. Paul
 174914,St. Paul,University of St. Thomas
 175157,Ely,Vermilion Community College
 175272,Winona,Winona State University
@@ -959,7 +958,7 @@ laccd,Los Angeles,Los Angeles Community College District
 180489,Missoula,University of Montana
 180692,Dillon,University of Montana Western
 180948,Chadron,Chadron State College
-180984,Seward,"Concordia University, Nebraska"
+180984,Seward,Concordia University, Nebraska
 181002,Omaha,Creighton University
 181020,Crete,Doane University
 181127,Hastings,Hastings College
@@ -976,8 +975,8 @@ laccd,Los Angeles,Los Angeles Community College District
 182306,Elko,Great Basin College
 441900,Henderson,Nevada State College
 182500,Reno,Truckee Meadows Community College
-182281,Las Vegas,"University of Nevada, Las Vegas"
-182290,Reno,"University of Nevada, Reno"
+182281,Las Vegas,University of Nevada, Las Vegas
+182290,Reno,University of Nevada, Reno
 182564,Carson City,Western Nevada College
 245865,Keene,Antioch University-New England
 182634,New London,Colby-Sawyer College
@@ -1230,7 +1229,7 @@ laccd,Los Angeles,Los Angeles Community College District
 196413,Syracuse,Syracuse University
 195234,Albany,The College of Saint Rose
 197285,White Plains,The College of Westchester
-190576,New York City,"The Graduate Center, CUNY"
+190576,New York City,The Graduate Center, CUNY
 454184,New York City,The King's College
 193654,New York City,The New School
 196565,Dryden,Tompkins Cortland Community College
@@ -1561,7 +1560,7 @@ laccd,Los Angeles,Los Angeles Community College District
 243212,Ponce,University of Puerto Rico at Ponce
 243221,Rio Piedras,University of Puerto Rico at Río Piedras
 243188,Utuado,University of Puerto Rico at Utuado
-243203,San Juan,"University of Puerto Rico, Medical Sciences"
+243203,San Juan,University of Puerto Rico, Medical Sciences
 217156,Providence,Brown University
 217165,Smithfield,Bryant University
 217235,Providence,Johnson & Wales University
@@ -1677,7 +1676,7 @@ laccd,Los Angeles,Los Angeles Community College District
 487010,Memphis,University of Tennessee Health Science Center
 221740,Chattanooga ,University of Tennessee at Chattanooga
 221768,Martin,University of Tennessee at Martin
-221759,Knoxville,"University of Tennessee, Knoxville"
+221759,Knoxville,University of Tennessee, Knoxville
 221999,Nashville,Vanderbilt University
 222053,Gallatin,Volunteer State Community College
 222062,Morristown,Walters State Community College

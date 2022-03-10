@@ -47,15 +47,15 @@ CREATE TABLE `Foods` (
     allergen VARCHAR(400)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-/*LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/foods.csv' INTO TABLE Foods FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;*/
-
 DROP TABLE IF EXISTS `Universities`;
 
 CREATE TABLE Universities (
     university_id INT PRIMARY KEY,
-    name VARCHAR(100),
-    location VARCHAR(255)
+    location VARCHAR(255),
+    name VARCHAR(100)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/colleges.csv' INTO TABLE Universities FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 DROP TABLE IF EXISTS `Dining_Halls`;
 
@@ -66,6 +66,8 @@ CREATE TABLE Dining_Halls (
     FOREIGN KEY (university_id) REFERENCES Universities(university_id) ON
      DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/dining_halls.csv' INTO TABLE Dining_Halls FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 DROP TABLE IF EXISTS `Students`;
 
