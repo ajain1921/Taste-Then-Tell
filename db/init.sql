@@ -67,7 +67,7 @@ CREATE TABLE Dining_Halls (
      DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/dining_halls.csv' INTO TABLE Dining_Halls FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/popular_unis_dining_halls.csv' INTO TABLE Dining_Halls FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 DROP TABLE IF EXISTS `Students`;
 
