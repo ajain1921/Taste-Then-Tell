@@ -20,3 +20,10 @@ From
     Dining_Halls
 where
     name like "U%";
+
+/* Select
+ *
+ From
+ Dining_Halls
+ order by
+ dining_hall_id desc; */
