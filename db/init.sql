@@ -47,7 +47,7 @@ CREATE TABLE `Foods` (
     allergen VARCHAR(400)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/foods.csv' INTO TABLE Foods FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+/*LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/foods.csv' INTO TABLE Foods FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;*/
 
 DROP TABLE IF EXISTS `Universities`;
 
