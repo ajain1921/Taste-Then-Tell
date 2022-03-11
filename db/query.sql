@@ -24,7 +24,6 @@ Select
     *
 from
     Foods
-    join Food_Allergens on Foods.food_id = Food_Allergens.food_id
     /* Select
      *
      From

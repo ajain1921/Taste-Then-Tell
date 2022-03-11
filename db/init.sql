@@ -119,7 +119,7 @@ CREATE TABLE Food_Allergens (
     FOREIGN KEY (food_id) REFERENCES Foods(food_id) ON DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/food_allergens.csv' INTO TABLE Food_Allergens FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/food_allergens.csv' INTO TABLE Food_Allergens FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */
 ;

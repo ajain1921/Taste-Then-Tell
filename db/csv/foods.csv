@@ -25,7 +25,7 @@
 9455,Asparagus Frozen Spears Steamed
 8711,Asparagus Spear Fzn
 6489,Asparagus Trimmed
-5648,"Asparagus w/ Lemon, Garlic & O.o."
+5648,Asparagus w/ Lemon & Garlic & O.o.
 7998,Assorted Cookies
 1661,Avocado Halves
 6577,Avocado Pulp 4oz ALC
@@ -37,7 +37,7 @@
 2779,Bagel Thomas Cinnamon Raisin 6pk
 18275,Bagel Thomas Everything 6pk
 18088,Bagel Thomas Plain 6pk
-17098,"Bagels, Cream Cheese, Butter, Jelly IH"
+17098,Bagels & Cream Cheese & Butter & Jelly IH
 293,Bamboo Shoots
 17357,Banana ALC
 841,Bananas Greentip
@@ -247,7 +247,7 @@
 10712,Bhaji Spinach and Cauliflower
 22054,Bio Bowl Paper White 24oz
 10126,Bio Fork
-10124,"Bio Plate 9"""
+10124,Bio Plate 9 in.
 1200,Biscuit Dough Fzn 2.2oz
 8406,Biscuit Dough Fzn Garlic Cheddar 1.2oz
 4321,Biscuits Buttermilk
@@ -267,10 +267,10 @@
 12390,Bowl Rice Mushroom
 18537,Bowl Rice Noodle Vermicelli
 18803,Bread Apple Paste Manchego
-8443,"Bread Baguette French Fzn 21"""
+8443,Bread Baguette French Fzn 21 in.
 18159,Bread Bao Folded Frozen
 18995,Bread Bao Folded Recipe
-17354,"Bread Bun Alpha RB Pl Deep 4"""
+17354,Bread Bun Alpha RB Pl Deep 4 in.
 1058,Bread Bun Sausage and Brat
 9643,Bread Bun Slider
 10091,Bread Cheesy Garlic
@@ -280,15 +280,15 @@
 4944,Bread Garlic Baked
 6938,Bread Garlic Sliced Fzn
 10711,Bread Grilled Pita
-1667,"Bread Pita Flat 7"""
+1667,Bread Pita Flat 7 in.
 16087,Bread Pudding Chocolate
-5859,"Bread Roll French Sliced 6""-8"""
-19368,"Bread Roll French Sliced Mini 4"""
+5859,Bread Roll French Sliced 6 in.-8 in.
+19368,Bread Roll French Sliced Mini 4 in.
 6466,Bread Roll Hawaiian Sweet
 1537,Bread Roll Sister Schubert
-21447,"Bread Roll Sourdough Hoagie Sliced 6"""
+21447,Bread Roll Sourdough Hoagie Sliced 6 in.
 21148,Bread Roll Steak Bun Alpha
-10150,"Bread Roll Wheat Hoagie Sliced 7"""
+10150,Bread Roll Wheat Hoagie Sliced 7 in.
 12422,Bread Roti
 19242,Bread Sourdough California Sliced
 4381,Bread Sticks Gourmet
@@ -352,19 +352,19 @@
 21119,Bun Brioche Fresh
 19121,Bun Brioche Fzn Sliced Rotella
 11770,Bun Brioche Slider Fzn
-14716,"Bun Hamburger Gourmet 4"" Alpha"
-18309,"Bun Hamburger Gourmet 4"" Rotella's"
-1054,"Bun Hamburger Sliced 4"""
-1057,"Bun Hot Dog 5.75"""
-11743,"Bun Hot Dog Alpha Jumbo 6"""
+14716,Bun Hamburger Gourmet 4 in. Alpha
+18309,Bun Hamburger Gourmet 4 in. Rotella's
+1054,Bun Hamburger Sliced 4 in.
+1057,Bun Hot Dog 5.75 in.
+11743,Bun Hot Dog Alpha Jumbo 6 in.
 6845,Bun Hot Dog Frozen
 7092,Bun Hot Dog Poppyseed
 21210,Bun Hot Dog Retail 8ct
 12961,Bun Hot Dog Slider
-6915,"Bun Kaiser Cornmeal 4.5"" Alpha"
-6926,"Bun Kaiser Cornmeal 4.5"" Hilltop Hearth"
-1051,"Bun Kaiser Plain 4.5"" Alpha"
-12984,"Bun Pretzel 4"""
+6915,Bun Kaiser Cornmeal 4.5 in. Alpha
+6926,Bun Kaiser Cornmeal 4.5 in. Hilltop Hearth
+1051,Bun Kaiser Plain 4.5 in. Alpha
+12984,Bun Pretzel 4 in.
 7544,Bun Red Bean
 14715,Bun Roll Pretzel Bavarian
 13212,Burrito Breakfast Chorizo Egg Peppers
@@ -410,7 +410,7 @@
 17383,Cake King Iced Traditional
 744,Cake Layer Carrot
 21212,Cake Layer Chocolate Dusted IlliniFuel
-2605,"Cake Layer Chocolate Sara Lee 9"""
+2605,Cake Layer Chocolate Sara Lee 9 in.
 2888,Cake Layer Lemon Italian
 6264,Cake Layer Red Velvet Sara Lee
 12484,Cake Lemon Blueberry
@@ -1341,7 +1341,7 @@
 3315,Onion Sauteed
 1457,Onion Thin Sliced
 17114,Onion Yellow Diced
-7870,"Onion Yellow Diced 1/4"""
+7870,Onion Yellow Diced 1/4 in.
 1151,Onions French Fried
 1904,Onions Green
 13339,Onions Red Pickled
@@ -1538,103 +1538,103 @@
 10705,Pineapple Churrasco
 10047,Pineapple Fresh Cubed Precut
 12214,Pineapple Salsa
-5370,"Pizza 12"" Cheese"
-6757,"Pizza 12"" Margherita"
-6212,"Pizza 12"" Veggie"
-17975,"Pizza 14"" Mac & Cheese FAR"
-10584,"Pizza 16"" Apple, Gouda, Bacon, Cheddar"
-10467,"Pizza 16"" Bacon Cheeseburger"
-10466,"Pizza 16"" Bacon Tomato Onion"
-7005,"Pizza 16"" BBQ Chicken"
-12743,"Pizza 16"" BBQ Pork"
-10449,"Pizza 16"" BBQ Smoked Chicken"
-9441,"Pizza 16"" Beef Bulgogi"
-12771,"Pizza 16"" Beef Italian Halal"
-18744,"Pizza 16"" Beef Italian Sausage Halal"
-10453,"Pizza 16"" Bianca"
-10451,"Pizza 16"" Bon Vivant Pizza"
-6995,"Pizza 16"" Breakfast"
-12593,"Pizza 16"" Breakfast Bacon Egg and Cheese"
-6005,"Pizza 16"" Breakfast Country"
-12550,"Pizza 16"" Breakfast Southwestern"
-8872,"Pizza 16"" Buffalo Chicken"
-9428,"Pizza 16"" Cajun"
-20907,"Pizza 16"" Cajun SSF Sauce"
-10787,"Pizza 16"" Cheesesticks"
-8698,"Pizza 16"" Chicken Bacon Ranch"
-12750,"Pizza 16"" Chicken Cordon Blue"
-18480,"Pizza 16"" Chicken Mediterranean"
-15079,"Pizza 16"" Chicken Pesto"
-21751,"Pizza 16"" Chicken Sausage"
-12757,"Pizza 16"" Chicken Teriyaki"
-12870,"Pizza 16"" Chicken Thai Curry"
-12763,"Pizza 16"" Chicken White Garlic"
-14575,"Pizza 16"" Cinnamon Sticks"
-11682,"Pizza 16"" Everything"
-20898,"Pizza 16"" Everything SSF Pizza"
-8713,"Pizza 16"" Florentine"
-10586,"Pizza 16"" Fruit"
-7558,"Pizza 16"" Greek"
-18367,"Pizza 16"" Grilled Pork Belly Arugula"
-7184,"Pizza 16"" Hawaiian"
-20900,"Pizza 16"" Hawaiian SSF Sauce"
-12434,"Pizza 16"" Le Hog"
-20909,"Pizza 16"" Le Hog SSF Sauce"
-20933,"Pizza 16"" Mac & Cheese"
-7559,"Pizza 16"" Margherita"
-14409,"Pizza 16"" Meat Deep Dish"
-21036,"Pizza 16"" Meat Deep Dish SSF Sauce"
-12217,"Pizza 16"" Meatzza Lovers"
-20896,"Pizza 16"" Meatzza Lovers SSF Sauce"
-9311,"Pizza 16"" Muffaleta"
-6404,"Pizza 16"" Mushroom Medley"
-20897,"Pizza 16"" Mushroom Medley SSF Sauce"
-12210,"Pizza 16"" Nacho"
-7564,"Pizza 16"" Pepperoni"
-13227,"Pizza 16"" Pepperoni Mushroom"
-20902,"Pizza 16"" Pepperoni SSF Sauce"
-8743,"Pizza 16"" Philly Cheese Steak"
-8978,"Pizza 16"" Portobello and Red Pepper"
-19834,"Pizza 16"" Rainbow Vegetable"
-12211,"Pizza 16"" Reuben"
-10590,"Pizza 16"" Roasted Vegetable Rustica"
-12263,"Pizza 16"" Sausage"
-12515,"Pizza 16"" Sausage Mushroom"
-12212,"Pizza 16"" Sausage Mushroom Pepperoni"
-20901,"Pizza 16"" Sausage Mushroom SSF Sauce"
-20903,"Pizza 16"" Sausage SSF Sauce"
-12755,"Pizza 16"" Spinach Artichoke"
-12751,"Pizza 16"" Steak and Mushroom"
-18757,"Pizza 16"" Steak and Mushroom Halal"
-7189,"Pizza 16"" Supreme"
-20895,"Pizza 16"" Supreme SSF Sauce"
-8979,"Pizza 16"" Taco"
-12754,"Pizza 16"" Thai Tofu"
-15361,"Pizza 16"" Thin 16"" Pepperoni"
-18482,"Pizza 16"" Thin Cauliflower Italian"
-21037,"Pizza 16"" Thin Cauliflower Italian SSF"
-16502,"Pizza 16"" Thin Greek"
-20910,"Pizza 16"" Thin Pepperoni SSF Sauce"
-17629,"Pizza 16"" Thin Roasted Vegetable Feta"
-15356,"Pizza 16"" Thin Sausage"
-20911,"Pizza 16"" Thin Sausage SSF Sauce"
-15355,"Pizza 16"" Thin Three Cheese"
-20912,"Pizza 16"" Thin Three Cheese SSF"
-15357,"Pizza 16"" Thin Vegetable"
-20913,"Pizza 16"" Thin Vegetable SSF Sauce"
-1300,"Pizza 16"" Three Cheese"
-20899,"Pizza 16"" Three Cheese SSF Sauce"
-10454,"Pizza 16"" Traditional Vegetable Pizza"
-16566,"Pizza 16"" Valentino"
-20906,"Pizza 16"" Valentino SSF Sauce"
-9356,"Pizza 16"" Vegetable California"
-20908,"Pizza 16"" Vegetable California SSF Sauce"
-12756,"Pizza 16"" Vegetable Spinach Broccoli"
-8177,"Pizza 16"" Vegetarian"
-16545,"Pizza 16"" Veggie Lover Deep Dish"
-20905,"Pizza 16"" Veggie Lover Deep Dish SSF"
-11681,"Pizza 16"" White Garlic Salami"
-11683,"Pizza 16"" White Pesto"
+5370,Pizza 12 in. Cheese
+6757,Pizza 12 in. Margherita
+6212,Pizza 12 in. Veggie
+17975,Pizza 14 in. Mac & Cheese FAR
+10584,Pizza 16 in. Apple & Gouda & Bacon & Cheddar
+10467,Pizza 16 in. Bacon Cheeseburger
+10466,Pizza 16 in. Bacon Tomato Onion
+7005,Pizza 16 in. BBQ Chicken
+12743,Pizza 16 in. BBQ Pork
+10449,Pizza 16 in. BBQ Smoked Chicken
+9441,Pizza 16 in. Beef Bulgogi
+12771,Pizza 16 in. Beef Italian Halal
+18744,Pizza 16 in. Beef Italian Sausage Halal
+10453,Pizza 16 in. Bianca
+10451,Pizza 16 in. Bon Vivant Pizza
+6995,Pizza 16 in. Breakfast
+12593,Pizza 16 in. Breakfast Bacon Egg and Cheese
+6005,Pizza 16 in. Breakfast Country
+12550,Pizza 16 in. Breakfast Southwestern
+8872,Pizza 16 in. Buffalo Chicken
+9428,Pizza 16 in. Cajun
+20907,Pizza 16 in. Cajun SSF Sauce
+10787,Pizza 16 in. Cheesesticks
+8698,Pizza 16 in. Chicken Bacon Ranch
+12750,Pizza 16 in. Chicken Cordon Blue
+18480,Pizza 16 in. Chicken Mediterranean
+15079,Pizza 16 in. Chicken Pesto
+21751,Pizza 16 in. Chicken Sausage
+12757,Pizza 16 in. Chicken Teriyaki
+12870,Pizza 16 in. Chicken Thai Curry
+12763,Pizza 16 in. Chicken White Garlic
+14575,Pizza 16 in. Cinnamon Sticks
+11682,Pizza 16 in. Everything
+20898,Pizza 16 in. Everything SSF Pizza
+8713,Pizza 16 in. Florentine
+10586,Pizza 16 in. Fruit
+7558,Pizza 16 in. Greek
+18367,Pizza 16 in. Grilled Pork Belly Arugula
+7184,Pizza 16 in. Hawaiian
+20900,Pizza 16 in. Hawaiian SSF Sauce
+12434,Pizza 16 in. Le Hog
+20909,Pizza 16 in. Le Hog SSF Sauce
+20933,Pizza 16 in. Mac & Cheese
+7559,Pizza 16 in. Margherita
+14409,Pizza 16 in. Meat Deep Dish
+21036,Pizza 16 in. Meat Deep Dish SSF Sauce
+12217,Pizza 16 in. Meatzza Lovers
+20896,Pizza 16 in. Meatzza Lovers SSF Sauce
+9311,Pizza 16 in. Muffaleta
+6404,Pizza 16 in. Mushroom Medley
+20897,Pizza 16 in. Mushroom Medley SSF Sauce
+12210,Pizza 16 in. Nacho
+7564,Pizza 16 in. Pepperoni
+13227,Pizza 16 in. Pepperoni Mushroom
+20902,Pizza 16 in. Pepperoni SSF Sauce
+8743,Pizza 16 in. Philly Cheese Steak
+8978,Pizza 16 in. Portobello and Red Pepper
+19834,Pizza 16 in. Rainbow Vegetable
+12211,Pizza 16 in. Reuben
+10590,Pizza 16 in. Roasted Vegetable Rustica
+12263,Pizza 16 in. Sausage
+12515,Pizza 16 in. Sausage Mushroom
+12212,Pizza 16 in. Sausage Mushroom Pepperoni
+20901,Pizza 16 in. Sausage Mushroom SSF Sauce
+20903,Pizza 16 in. Sausage SSF Sauce
+12755,Pizza 16 in. Spinach Artichoke
+12751,Pizza 16 in. Steak and Mushroom
+18757,Pizza 16 in. Steak and Mushroom Halal
+7189,Pizza 16 in. Supreme
+20895,Pizza 16 in. Supreme SSF Sauce
+8979,Pizza 16 in. Taco
+12754,Pizza 16 in. Thai Tofu
+15361,Pizza 16 in. Thin 16 in. Pepperoni
+18482,Pizza 16 in. Thin Cauliflower Italian
+21037,Pizza 16 in. Thin Cauliflower Italian SSF
+16502,Pizza 16 in. Thin Greek
+20910,Pizza 16 in. Thin Pepperoni SSF Sauce
+17629,Pizza 16 in. Thin Roasted Vegetable Feta
+15356,Pizza 16 in. Thin Sausage
+20911,Pizza 16 in. Thin Sausage SSF Sauce
+15355,Pizza 16 in. Thin Three Cheese
+20912,Pizza 16 in. Thin Three Cheese SSF
+15357,Pizza 16 in. Thin Vegetable
+20913,Pizza 16 in. Thin Vegetable SSF Sauce
+1300,Pizza 16 in. Three Cheese
+20899,Pizza 16 in. Three Cheese SSF Sauce
+10454,Pizza 16 in. Traditional Vegetable Pizza
+16566,Pizza 16 in. Valentino
+20906,Pizza 16 in. Valentino SSF Sauce
+9356,Pizza 16 in. Vegetable California
+20908,Pizza 16 in. Vegetable California SSF Sauce
+12756,Pizza 16 in. Vegetable Spinach Broccoli
+8177,Pizza 16 in. Vegetarian
+16545,Pizza 16 in. Veggie Lover Deep Dish
+20905,Pizza 16 in. Veggie Lover Deep Dish SSF
+11681,Pizza 16 in. White Garlic Salami
+11683,Pizza 16 in. White Pesto
 20095,Pizza 7in BBQ Chicken ALC
 21470,Pizza 7in California Vegetable ALC
 16207,Pizza 7in Cheese ALC
@@ -1645,7 +1645,7 @@
 21884,Pizza 7in Veggie ALC
 5657,Pizza Cheese 7in
 18015,Pizza Cookie Chocolate Chunk
-6618,"Pizza Crust 7"" Parbaked"
+6618,Pizza Crust 7 in. Parbaked
 19024,Pizza Naan Cheese
 16239,Pizza Naan Margherita
 17137,Pizza Naan Margherita AYCTE
@@ -1658,7 +1658,7 @@
 18239,Polenta Cakes Southwest w/ Cilantro Lime
 8054,Polenta Creamy Vegetable & Herb IH
 5645,Polenta w/ Spinach & Garlic
-4724,"Polenta w/Tomato, Corn and Basil"
+4724,Polenta w/Tomato & Corn and Basil
 5196,Polenta with Roasted Vegetables
 19528,Popsicle Paleta Chamoy Chili
 19530,Popsicle Paleta Mango Chili
@@ -1830,7 +1830,7 @@
 21840,Rice Greek Spinach
 14898,Rice Jasmine Coconut Mango
 11017,Rice Korean Happy
-6945,"Rice Mexican ""Yellow"""
+6945,Rice Mexican  in.Yellow in.
 20955,Rice Mixed Vegetable ISR
 20825,Rice Nigerian Coconut ISR
 4447,Rice Paella Vegetarian
@@ -1938,7 +1938,7 @@
 15002,Salad Greek Platter
 13802,Salad Greens Goat Cheese Almond Berry
 3052,Salad Ham
-17822,"Salad Hearts of Palm w/ Tomato, Avocado"
+17822,Salad Hearts of Palm w/ Tomato & Avocado
 10621,Salad Illini
 14904,Salad Illini Summer
 17580,Salad Italian House IH
@@ -2004,7 +2004,7 @@
 10853,Salad Quinoa Lentil
 13969,Salad Quinoa Tex Mex
 13970,Salad Quinoa Tomato Feta
-14965,"Salad Quinoa, Apple, Cranberry & Feta"
+14965,Salad Quinoa & Apple & Cranberry & Feta
 12932,Salad Roasted Beet and Orange
 5651,Salad Roasted Corn & Black Bean
 17536,Salad Roasted Sweet Potato & White Bean
@@ -2151,7 +2151,7 @@
 5639,Sandwich Pork Pulled BBQ
 9348,Sandwich Pork Pulled BBQ on Kaiser IH
 19226,Sandwich Pork Tenderloin with Pickles
-17645,"Sandwich Portabella, Hummus & Red Pepper"
+17645,Sandwich Portabella & Hummus & Red Pepper
 3233,Sandwich Reuben
 825,Sandwich Reuben IU
 13019,Sandwich Roast Beef & Cheddar
@@ -2665,18 +2665,18 @@
 19895,Toppings Taco Fish
 8957,Tortilla Black Bean Casserole
 19182,Tortilla Corn Fried Recipe
-20459,"Tortilla Corn White 6"""
+20459,Tortilla Corn White 6 in.
 1205,Tortilla Corn Yellow 6''
 11240,Tortilla Española
-1629,"Tortilla Flour 12"""
-1072,"Tortilla Flour 6"""
-518,"Tortilla Flour 8"""
+1629,Tortilla Flour 12 in.
+1072,Tortilla Flour 6 in.
+518,Tortilla Flour 8 in.
 16693,Tortilla Strips Corn House Made
-2521,"Tortilla Wrap 12"" Jalapeno Cheese Flavor"
-2520,"Tortilla Wrap 12"" Spinach"
-2519,"Tortilla Wrap 12"" Tomato Basil"
-2535,"Tortilla Wrap Whole Wheat 12"""
-4786,"Tortillas Flour 12"""
+2521,Tortilla Wrap 12 in. Jalapeno Cheese Flavor
+2520,Tortilla Wrap 12 in. Spinach
+2519,Tortilla Wrap 12 in. Tomato Basil
+2535,Tortilla Wrap Whole Wheat 12 in.
+4786,Tortillas Flour 12 in.
 16509,Trail Mix Illini
 16510,Trail Mix Longevity
 13688,Tray Fruit
@@ -2860,7 +2860,7 @@
 13495,Zucchini w/ Grape Tomato Roasted Garlic
 17388,Zucchini w/ Red Onion Lemon Vinaigrette
 7683,zzBeans Green Frozen Italian Cut
-512,"zzBread Pita Pocket 6"""
+512,zzBread Pita Pocket 6 in.
 9575,zzBread Roll French Sliced Parbaked Fzn
 21125,zzBread Roll Sub Rosen's
 7051,zzBrownie Fudge Iced Premade

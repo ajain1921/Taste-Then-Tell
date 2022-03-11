@@ -19,11 +19,10 @@ with open('db/csv/foods.csv', 'w', newline='') as csvfile1:
     for a in x:
         if (not x[a]['food_id']):
             continue
-        if (x[a]['allergen']):
-            #print(x[a]['allergen'][0])
-            spamwriter.writerow([x[a]['food_id'], a])
-        else:
-            spamwriter.writerow([x[a]['food_id'], a])
+        b = a.replace(",", " &")
+        b = b.replace("\"", " in.")
+        spamwriter.writerow([x[a]['food_id'], b])
+
 
 with open('db/csv/food_allergens.csv', 'w', newline='') as csvfile1:
     spamwriter = csv.writer(csvfile1, delimiter=',')
