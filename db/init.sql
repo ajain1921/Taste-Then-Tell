@@ -99,6 +99,8 @@ CREATE TABLE Reviews (
      DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/reviews.csv' INTO TABLE Reviews FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
 DROP TABLE IF EXISTS `Schedules`;
 
 CREATE TABLE Schedules (
@@ -112,7 +114,7 @@ CREATE TABLE Schedules (
      DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/combinedSchedule.csv' INTO TABLE Schedules FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/newCombinedSchedule.csv' INTO TABLE Schedules FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 DROP TABLE IF EXISTS `Food_Allergens`;
 
