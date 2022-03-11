@@ -340,7 +340,7 @@ university_id,location,name
 137281,Palatka,St. Johns River State College
 137078,St. Petersburg,St. Petersburg College
 137476,Miami Gardens,St. Thomas University
-135391,Bradenton,State College of Florida, Manatee-Sarasota
+135391,Bradenton,State College of Florida
 137546,DeLand,Stetson University
 44903808,Fort Lauderdale,Strayer University at Fort Lauderdale
 137120,Sarasota,Suncoast Technical College
@@ -645,8 +645,8 @@ university_id,location,name
 159391,Baton Rouge,Louisiana State University
 159382,Alexandria,Louisiana State University Alexandria
 159407,Eunice,Louisiana State University Eunice
-159373,New Orleans,Louisiana State University Health Sciences Center, New Orleans
-435000,Shreveport,Louisiana State University Health Sciences Center, Shreveport
+159373,New Orleans,Louisiana State University Health Sciences Center
+435000,Shreveport,Louisiana State University Health Sciences Center
 159416,Shreveport,Louisiana State University Shreveport 
 159647,Ruston,Louisiana Tech University
 159656,New Orleans,Loyola University New Orleans
@@ -1229,7 +1229,7 @@ university_id,location,name
 196413,Syracuse,Syracuse University
 195234,Albany,The College of Saint Rose
 197285,White Plains,The College of Westchester
-190576,New York City,The Graduate Center, CUNY
+190576,New York City,The Graduate Center
 454184,New York City,The King's College
 193654,New York City,The New School
 196565,Dryden,Tompkins Cortland Community College
@@ -1560,7 +1560,7 @@ university_id,location,name
 243212,Ponce,University of Puerto Rico at Ponce
 243221,Rio Piedras,University of Puerto Rico at Río Piedras
 243188,Utuado,University of Puerto Rico at Utuado
-243203,San Juan,University of Puerto Rico, Medical Sciences
+243203,San Juan,University of Puerto Rico
 217156,Providence,Brown University
 217165,Smithfield,Bryant University
 217235,Providence,Johnson & Wales University
