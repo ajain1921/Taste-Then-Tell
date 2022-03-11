@@ -837,7 +837,7 @@ university_id,location,name
 175315,White Bear Lake,Century College
 174747,St. Joseph,College of Saint Benedict and Saint John's University
 173300,Moorhead,Concordia College at Moorhead
-173328,St. Paul,Concordia University, St. Paul
+173328,St. Paul,Concordia University
 174862,Saint Bonifacius,Crown College
 173416,Rosemount,Dakota County Technical College
 380368,Cloquet,Fond du Lac Tribal and Community College
@@ -975,8 +975,8 @@ university_id,location,name
 182306,Elko,Great Basin College
 441900,Henderson,Nevada State College
 182500,Reno,Truckee Meadows Community College
-182281,Las Vegas,University of Nevada, Las Vegas
-182290,Reno,University of Nevada, Reno
+182281,Las Vegas,University of Nevada
+182290,Reno,University of Nevada
 182564,Carson City,Western Nevada College
 245865,Keene,Antioch University-New England
 182634,New London,Colby-Sawyer College
