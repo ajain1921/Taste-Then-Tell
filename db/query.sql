@@ -1,32 +1,28 @@
 USE Taste_Then_Tell;
 
-/* SELECT
- name
+/* Select
+ *
  From
- Dining_Halls
+ Schedules s natural
+ join Food_Allergens f natural
+ join Dining_Halls d
  where
- university_id in (
- SELECT
- university_id
+ d.name like "%PAR%"
+ and s.food_id Not in (
+ Select
+ distinct food_id
  from
- Universities
+ Food_Allergens
  where
- name like "U%"
- )
- Intersect
- SELECT
- name
- From
- Dining_Halls
- where
- name like "U%"; */
+ f.allergen like "%wheat%"
+ );
+ 
+ group by
+ s.food_id */
 Select
-    *
-from
-    Foods
-    /* Select
-     *
-     From
-     Dining_Halls
-     order by
-     dining_hall_id desc; */
+    COUNT(user_id),
+    university_id
+From
+    Students
+group by
+    university_id

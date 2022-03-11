@@ -16,6 +16,7 @@ with open('db/csv/all_food_data_not_combined.csv', newline='') as csvfile:
 
 with open('db/csv/foods.csv', 'w', newline='') as csvfile1:
     spamwriter = csv.writer(csvfile1, delimiter=',')
+    spamwriter.writerow(["food_id", "name"])
     for a in x:
         if (not x[a]['food_id']):
             continue
@@ -26,6 +27,7 @@ with open('db/csv/foods.csv', 'w', newline='') as csvfile1:
 
 with open('db/csv/food_allergens.csv', 'w', newline='') as csvfile1:
     spamwriter = csv.writer(csvfile1, delimiter=',')
+    spamwriter.writerow(["food_id", "allergen"])
     for a in x:
         if (not x[a]['food_id']):
             continue

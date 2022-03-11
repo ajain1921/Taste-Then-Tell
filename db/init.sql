@@ -82,6 +82,8 @@ CREATE TABLE Students (
      DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/students.csv' INTO TABLE Students FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
 DROP TABLE IF EXISTS `Reviews`;
 
 CREATE TABLE Reviews (
@@ -109,6 +111,8 @@ CREATE TABLE Schedules (
     FOREIGN KEY (dining_hall_id) REFERENCES Dining_Halls(dining_hall_id) ON
      DELETE CASCADE
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/combinedSchedule.csv' INTO TABLE Schedules FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 DROP TABLE IF EXISTS `Food_Allergens`;
 
