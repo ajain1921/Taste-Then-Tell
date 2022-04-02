@@ -10,7 +10,7 @@ const { errorHandler } = require('./middleware');
 const app = express();
 
 app.use(helmet());
-app.use(cors());
+app.use(cors({ origin: /localhost:\d{4}/, credentials: true }));
 
 app.use(logger('dev'));
 
