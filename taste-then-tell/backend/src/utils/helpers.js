@@ -11,4 +11,10 @@ const createResponse = (status, message, data) => ({
   result: data,
 });
 
-module.exports = createResponse;
+const sendResponse = (res, status, message, data) =>
+  res.status(status).json(createResponse(status, message, data));
+
+const sendSuccess = (res, message, data) =>
+  sendResponse(res, 200, message, data);
+
+module.exports = { createResponse, sendResponse, sendSuccess };
