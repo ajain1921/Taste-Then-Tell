@@ -12,7 +12,7 @@ const { sendSuccess } = require('../utils');
 router.get(
   '/',
   errorWrap(async (req, res) => {
-    const QUERY = 'SELECT * from Foods';
+    const QUERY = 'SELECT * from Foods LIMIT 50';
 
     db.query(QUERY, (err, results) => {
       if (err) {

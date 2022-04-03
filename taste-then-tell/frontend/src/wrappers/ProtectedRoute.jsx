@@ -16,7 +16,7 @@ const ProtectedRoute = ({ Component }) => {
 
   return (
     <>
-      {!isLogin && <Navbar />}
+      <Navbar />
       <Component />
     </>
   );

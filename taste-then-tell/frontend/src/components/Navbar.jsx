@@ -1,39 +1,87 @@
 import React from "react";
-import { UnorderedList, ListItem, Link, chakra, Flex } from "@chakra-ui/react";
+import {
+  UnorderedList,
+  ListItem,
+  Link,
+  chakra,
+  Flex,
+  Box,
+  Stack,
+  Button,
+  Menu,
+  MenuButton,
+  Avatar,
+  MenuList,
+  Center,
+  MenuDivider,
+  MenuItem,
+  useColorModeValue,
+  useColorMode,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../contexts/context";
 
 export const Navbar = () => {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <chakra.nav m={0} p={0}>
-      <UnorderedList
-        color="white"
-        backgroundColor="rgb(67, 134, 145)"
-        listStyleType="none"
-        m={0}
-        height="60px"
-        p={5}
-        display="flex"
-        alignItems="center"
-      >
-        <ListItem>Taste Then Tell</ListItem>
-        <Flex justifyContent="right" flexGrow="1">
-          <ListItem mr={5}>
-            <Link href="/universities">Universities</Link>
-          </ListItem>
-          <ListItem mr={5}>
-            <Link href="/dininghalls">Dining Halls</Link>
-          </ListItem>
-          <ListItem mr={5}>
-            <Link href="/profile">Profile</Link>
-          </ListItem>
-          <ListItem mr={5}>
-            <Link onClick={() => logout()}>Logout</Link>
-          </ListItem>
+    <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+        <Box>Taste Then Tell</Box>
+
+        <Flex alignItems={"center"}>
+          <Stack direction={"row"} spacing={7} alignItems={"center"}>
+            {user && (
+              <>
+                <Link href="/foods">Foods</Link>
+                <Link href="/universities">Universities</Link>
+                <Link href="/dininghalls">Dining Halls</Link>
+              </>
+            )}
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            </Button>
+            {user && (
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}
+                >
+                  <Avatar
+                    size={"sm"}
+                    src={`https://api.multiavatar.com/${user.first_name} ${user.last_name}.svg`}
+                  />
+                </MenuButton>
+                <MenuList alignItems={"center"}>
+                  <br />
+                  <Center>
+                    <Avatar
+                      size={"2xl"}
+                      src={`https://api.multiavatar.com/${user.first_name} ${user.last_name}.svg`}
+                    />
+                  </Center>
+
+                  <Center pb="5px" pt="10px">
+                    <p>{`${user.first_name} ${user.last_name}`}</p>
+                  </Center>
+
+                  <MenuDivider />
+                  <MenuItem as="a" href="/profile">
+                    Your Profile
+                  </MenuItem>
+                  <MenuItem onClick={() => logout()}>Logout</MenuItem>
+                </MenuList>
+              </Menu>
+            )}
+          </Stack>
         </Flex>
-      </UnorderedList>
-    </chakra.nav>
+      </Flex>
+    </Box>
   );
 };
 
