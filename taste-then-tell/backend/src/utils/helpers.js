@@ -17,4 +17,6 @@ const sendResponse = (res, status, message, data) =>
 const sendSuccess = (res, message, data) =>
   sendResponse(res, 200, message, data);
 
-module.exports = { createResponse, sendResponse, sendSuccess };
+const sendNotFound = (res, message) => sendResponse(res, 404, message, {});
+
+module.exports = { createResponse, sendResponse, sendSuccess, sendNotFound };

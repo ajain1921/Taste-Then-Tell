@@ -1,3 +1,8 @@
-const { sendSuccess, createResponse, sendResponse } = require('./helpers');
+const {
+  sendSuccess,
+  createResponse,
+  sendResponse,
+  sendNotFound,
+} = require('./helpers');
 
-module.exports = { sendSuccess, createResponse, sendResponse };
+module.exports = { sendSuccess, createResponse, sendResponse, sendNotFound };

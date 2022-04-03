@@ -1,32 +1,75 @@
-import { Box, Button, Center, Heading, Input, Stack } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
-import { instance } from "../api";
+import {
+  Alert,
+  AlertDescription,
+  AlertIcon,
+  Box,
+  Button,
+  Center,
+  Heading,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/context";
 
 const Home = () => {
-  const [foods, setFoods] = useState({});
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await instance.get("/reviews");
-      setFoods(res.data);
-    };
-    fetchData();
-  }, []);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
+
+  const submit = async () => {
+    try {
+      await login(email, password);
+      setError(false);
+      navigate("/profile");
+    } catch (error) {
+      setError(true);
+    }
+  };
 
   return (
-    <Box h="100vh">
+    <Box>
       <Center flexDirection="column" marginTop="100px">
-        <Stack spacing={4}>
+        <Stack spacing={4} width="275px">
           <Center>
             <Heading>Login</Heading>
           </Center>
           <Stack>
-            <Input placeholder="username" size="xs" />
-            <Input placeholder="password" size="xs" />
+            {error && (
+              <Alert status="error" variant="subtle">
+                <AlertIcon />
+
+                <AlertDescription>
+                  Invalid username and password.
+                </AlertDescription>
+              </Alert>
+            )}
+
+            <Input
+              placeholder="Email"
+              size="sm"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              placeholder="Password"
+              size="sm"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </Stack>
-          <Button colorScheme="teal" size="xs">
+          <Button colorScheme="teal" size="sm" onClick={() => submit()}>
             Login
           </Button>
+          <Text fontSize="md">
+            Don't have an account? Sign up{" "}
+            <Link to="/hi">
+              <u>here</u>
+            </Link>{" "}
+          </Text>
         </Stack>
       </Center>
     </Box>
