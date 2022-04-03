@@ -33,13 +33,15 @@ const Foods = () => {
             <Tr>
               <Th>Food ID</Th>
               <Th>Food Name</Th>
+              <Th>Allergens</Th>
             </Tr>
           </Thead>
           <Tbody>
-            {foods.map(({ food_id, name }) => (
+            {foods.map(({ food_id, name, allergens }) => (
               <Tr>
                 <Td isNumeric>{food_id}</Td>
                 <Td>{name}</Td>
+                <Td>{allergens}</Td>
               </Tr>
             ))}
           </Tbody>

@@ -12,7 +12,8 @@ const { sendSuccess } = require('../utils');
 router.get(
   '/',
   errorWrap(async (req, res) => {
-    const QUERY = 'SELECT * from Foods LIMIT 50';
+    const QUERY =
+      'select food_id, name, GROUP_CONCAT(allergen) as allergens from Foods left join Food_Allergens using(food_id) group by food_id LIMIT 50';
 
     db.query(QUERY, (err, results) => {
       if (err) {
