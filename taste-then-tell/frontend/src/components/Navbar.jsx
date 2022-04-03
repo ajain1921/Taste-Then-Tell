@@ -21,6 +21,16 @@ import {
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useAuth } from "../contexts/context";
+import { useLocation } from "react-router-dom";
+
+const NavLink = ({ path, title }) => {
+  const location = useLocation();
+  return (
+    <Link href={path}>
+      {location.pathname === path ? <strong>{title}</strong> : title}
+    </Link>
+  );
+};
 
 export const Navbar = () => {
   const { logout, user } = useAuth();
@@ -35,9 +45,9 @@ export const Navbar = () => {
           <Stack direction={"row"} spacing={7} alignItems={"center"}>
             {user && (
               <>
-                <Link href="/foods">Foods</Link>
-                <Link href="/universities">Universities</Link>
-                <Link href="/dininghalls">Dining Halls</Link>
+                <NavLink path="/foods" title="Foods" />
+                <NavLink path="/universities" title="Universities" />
+                <NavLink path="/dininghalls" title="Dining Halls" />
               </>
             )}
             <Button onClick={toggleColorMode}>
