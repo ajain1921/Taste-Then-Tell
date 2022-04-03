@@ -20,13 +20,12 @@ const App = () => {
         path="/universities"
         element={<ProtectedRoute Component={Universities} />}
       />
-      {/* <Route path="/foods" element={<ProtectedRoute Component={Foods} />} />
+      <Route path="/foods" element={<ProtectedRoute Component={Foods} />} />
       <Route
         path="/foods/:food_id"
         element={<ProtectedRoute Component={FoodItem} />}
-      /> */}
-      <Route path="/foods" element={<Foods />} />
-      <Route path="/foods/:food_id" element={<FoodItem />} />} />
+      />
+      {/* <Route path="/foods/:food_id" element={<FoodItem />} /> */}
     </Routes>
   );
 };
