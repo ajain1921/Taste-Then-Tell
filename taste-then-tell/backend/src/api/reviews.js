@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const { errorWrap } = require('../middleware');
-const { sendSuccess } = require('../utils');
+const { sendSuccess, sendNotFound } = require('../utils');
 
 /* endpoint to get all the reviews */
 router.get(
@@ -79,8 +79,8 @@ router.put(
       if (err) {
         return res.send(err);
       }
-      if (results.affectedRows == 0) { //TODO: should this be a success? Find out
-        return sendSuccess(res, `No review text was edited because no review exists with review_id: ${review_id}`, results);
+      if (results.affectedRows == 0) {
+        return sendNotFound(res, `No review text was edited because no review exists with review_id: ${review_id}`);
       }
 
       sendSuccess(res, `Successfully edited the TEXT of the review with review_id: ${review_id}`, results);
@@ -102,8 +102,8 @@ router.put(
       if (err) {
         return res.send(err);
       }
-      if (results.affectedRows == 0) { //TODO: should this be a success? Find out
-        return sendSuccess(res, `No review rating was edited because no review exists with review_id: ${review_id}`, results);
+      if (results.affectedRows == 0) {
+        return sendNotFound(res, `No review rating was edited because no review exists with review_id: ${review_id}`);
       }
 
       sendSuccess(res, `Successfully edited RATING of the review with review_id: ${review_id}`, results);
