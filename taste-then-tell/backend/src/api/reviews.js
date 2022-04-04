@@ -184,7 +184,7 @@ router.get(
   '/average_ratings/',
   errorWrap(async (req, res) => {
     const QUERY =
-      'SELECT u.name, dh.name, AVG(r.rating) as avgRating FROM Reviews r NATURAL JOIN Dining_Halls dh JOIN Universities u USING(university_id) GROUP BY dh.dining_hall_id ORDER BY avgRating DESC';
+      'SELECT u.name as university_name, dh.name as dining_hall_name, AVG(r.rating) as avgRating FROM Reviews r NATURAL JOIN Dining_Halls dh JOIN Universities u USING(university_id) GROUP BY dh.dining_hall_id ORDER BY avgRating DESC LIMIT 50';
     db.query(QUERY, (err, results) => {
       console.log(QUERY);
       if (err) {

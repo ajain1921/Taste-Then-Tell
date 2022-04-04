@@ -41,6 +41,33 @@ router.get(
   }),
 );
 
+/* const COMPLEX_QUERY =
+  'SELECT name, dining_hall_id, COUNT (DISTINCT food_id) FROM Schedules s NATURAL JOIN Food_Allergens f NATURAL JOIN Dining_Halls d WHERE s.food_id NOT IN (SELECT DISTINCT food_id FROM  Food_Allergens f1 WHERE f1.allergen LIKE "%wheat%") GROUP BY d.dining_hall_id';
+ */
+/* endpoint to get the counts per dining hall of foods that are free of a specific allergen*/
+router.get(
+  '/filter_out_allergen',
+  errorWrap(async (req, res) => {
+    const { allergen } = req.query;
+    console.log(allergen);
+
+    const QUERY = `SELECT name, COUNT (DISTINCT food_id) as nonAllergenCount FROM Schedules s NATURAL JOIN Food_Allergens f NATURAL JOIN Dining_Halls d WHERE s.food_id NOT IN (SELECT DISTINCT food_id FROM  Food_Allergens f1 WHERE f1.allergen LIKE "%${allergen}%") GROUP BY d.dining_hall_id order by nonAllergenCount DESC LIMIT 50`;
+
+    db.query(QUERY, (err, results) => {
+      console.log(QUERY);
+      if (err) {
+        return res.send(err);
+      }
+
+      sendSuccess(
+        res,
+        'Successfully returned foods that do not contain ' + allergen,
+        results,
+      );
+    });
+  }),
+);
+
 /* get food by food_id */
 router.get(
   '/:food_id',
@@ -59,34 +86,6 @@ router.get(
       } else {
         sendNotFound(res, 'Food not found');
       }
-    });
-  }),
-);
-
-/* const COMPLEX_QUERY =
-  'SELECT name, dining_hall_id, COUNT (DISTINCT food_id) FROM Schedules s NATURAL JOIN Food_Allergens f NATURAL JOIN Dining_Halls d WHERE s.food_id NOT IN (SELECT DISTINCT food_id FROM  Food_Allergens f1 WHERE f1.allergen LIKE "%wheat%") GROUP BY d.dining_hall_id';
- */
-
-/* endpoint to get the counts per dining hall of foods that are free of a specific allergen*/
-router.get(
-  '/filter_out_allergen/',
-  errorWrap(async (req, res) => {
-    const { allergen } = req.body;
-    console.log(allergen);
-
-    const QUERY = `SELECT name, dining_hall_id, COUNT (DISTINCT food_id) FROM Schedules s NATURAL JOIN Food_Allergens f NATURAL JOIN Dining_Halls d WHERE s.food_id NOT IN (SELECT DISTINCT food_id FROM  Food_Allergens f1 WHERE f1.allergen LIKE "%${allergen}%") GROUP BY d.dining_hall_id`;
-
-    db.query(QUERY, (err, results) => {
-      console.log(QUERY);
-      if (err) {
-        return res.send(err);
-      }
-
-      sendSuccess(
-        res,
-        'Successfully returned foods that do not contain ' + allergen,
-        results,
-      );
     });
   }),
 );
