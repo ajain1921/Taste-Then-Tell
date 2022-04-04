@@ -21,6 +21,28 @@ router.get(
   }),
 );
 
+/* get food by food_id */
+router.get(
+  '/:food_id',
+  errorWrap(async (req, res) => {
+    const { food_id } = req.params;
+
+    const QUERY = `SELECT food_id, name, GROUP_CONCAT(allergen) as allergen FROM Foods LEFT JOIN Food_Allergens using(food_id) WHERE food_id = ${food_id} GROUP BY food_id`;
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned food', results);
+      } else {
+        sendNotFound(res, 'Food not found');
+      }
+    });
+  }),
+);
+
 /* endpoint to search food table by food name */
 router.get(
   '/search_by_name/',
