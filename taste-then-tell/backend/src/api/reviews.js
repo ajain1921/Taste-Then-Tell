@@ -26,7 +26,7 @@ router.get(
   errorWrap(async (req, res) => {
     const { review_id } = req.params;
 
-    const QUERY = `SELECT * from Reviews WHERE review_id = ${review_id}`;
+    const QUERY = `SELECT review_id, user_id, first_name, last_name, food_id, f.name as food_name, dining_hall_id, d.name as dining_hall_name, rating, feedback FROM Reviews r LEFT JOIN Students s using(user_id) LEFT JOIN Foods f using(food_id) LEFT JOIN Dining_Halls d using(dining_hall_id) WHERE review_id = ${review_id}`;
 
     db.query(QUERY, (err, results) => {
       if (err) {
