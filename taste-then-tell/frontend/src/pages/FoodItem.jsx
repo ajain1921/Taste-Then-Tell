@@ -16,7 +16,7 @@ import {
   Textarea,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { instance } from "../api";
 
@@ -38,18 +38,7 @@ const FoodItem = () => {
   const [deleteModalReviewId, setDeleteModalReviewId] = useState(null);
   const [editedRating, setEditedRating] = useState(null);
   const [editedFeedback, setEditedFeedback] = useState(null);
-
-  const {
-    isOpen: isDeleteOpen,
-    onOpen: onDeleteOpen,
-    onClose: onDeleteClose,
-  } = useDisclosure();
-
-  const {
-    isOpen: isEditOpen,
-    onOpen: onEditOpen,
-    onClose: onEditClose,
-  } = useDisclosure();
+  const [refresh, setRefresh] = useState(null);
 
   const createReview = async () => {
     const body = {
@@ -61,7 +50,7 @@ const FoodItem = () => {
     };
 
     await instance.post("/reviews/add_review/", body);
-    console.log(body);
+    setRefresh(!refresh);
   };
 
   const editReview = async () => {
@@ -78,12 +67,13 @@ const FoodItem = () => {
     if (editedFeedback)
       await instance.put("/reviews/edit_review_text", bodyFeedback);
     setEditModalReviewId(null);
+    setRefresh(!refresh);
   };
 
   const deleteReview = async () => {
     await instance.delete(`/reviews/delete/${deleteModalReviewId}`);
-    console.log({ deleteModalReviewId });
     setDeleteModalReviewId(null);
+    setRefresh(!refresh);
   };
 
   useEffect(() => {
@@ -92,7 +82,7 @@ const FoodItem = () => {
       setCurrFood(res.data.result[0]);
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,7 +90,7 @@ const FoodItem = () => {
       setDiningHalls(res.data.result);
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -108,7 +98,7 @@ const FoodItem = () => {
       setReviews(res.data.result);
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
   return (
     <Flex flexDirection="column" w="75%" m="auto" pt="20px" display="flex">
@@ -238,129 +228,118 @@ const FoodItem = () => {
       <List spacing={1}>
         {reviews.map((review) => {
           return (
-            <Flex flexDir="row" mt={5} mb={5}>
-              <Flex flexDir="column" width="200px">
-                <Text>
-                  {review.first_name} {review.last_name}
-                </Text>
-                <Text>{review.rating.toFixed(1)} stars</Text>
-                <Text width="inherit" isTruncated>
-                  {review.dining_hall_name}
-                </Text>
-              </Flex>
-              <Flex flexDir="column" ml="15px" width="1000px">
-                {review.feedback}
-              </Flex>
-              {user.user_id === review.user_id && (
-                <Flex ml="15px" flexDir="column" width="80px">
-                  {/* TODO: Populate reviews via mapping */}
-                  <Button
-                    mb={1}
-                    colorScheme="blue"
-                    onClick={() => setEditModalReviewId(review.review_id)}
-                  >
-                    Edit
-                  </Button>
-                  <Modal
-                    isOpen={review.review_id === editModalReviewId}
-                    onClose={() => setEditModalReviewId(null)}
-                    autoFocus={false}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Edit Review</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        <Textarea
-                          defaultValue={review.feedback}
-                          onChange={(e) => setEditedFeedback(e.target.value)}
-                        ></Textarea>
-                        <Select
-                          mr="15px"
-                          flex="1"
-                          bg="gray.100"
-                          placeholder="Select your rating..."
-                          onChange={(e) => setEditedRating(e.target.value)}
-                          defaultValue={review.rating}
-                        >
-                          <option value="5">5 stars</option>
-                          <option value="4">4 stars</option>
-                          <option value="3">3 stars</option>
-                          <option value="2">2 stars</option>
-                          <option value="1">1 star</option>
-                        </Select>
-                      </ModalBody>
-
-                      <ModalFooter>
-                        {/* TODO */}
-                        <Button colorScheme="blue" onClick={() => editReview()}>
-                          Save
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
-
-                  <Button
-                    colorScheme="red"
-                    onClick={() => setDeleteModalReviewId(review.review_id)}
-                  >
-                    {<DeleteIcon />}
-                  </Button>
-                  <Modal
-                    isOpen={review.review_id === deleteModalReviewId}
-                    onClose={() => setDeleteModalReviewId(null)}
-                    autoFocus={false}
-                  >
-                    <ModalOverlay />
-                    <ModalContent>
-                      <ModalHeader>Delete Review</ModalHeader>
-                      <ModalCloseButton />
-                      <ModalBody>
-                        Are you sure you want to delete your review?
-                      </ModalBody>
-
-                      <ModalFooter>
-                        <Button
-                          colorScheme="blue"
-                          variant="ghost"
-                          mr={3}
-                          // TODO
-                          onClick={() => setDeleteModalReviewId(null)}
-                        >
-                          Cancel
-                        </Button>
-                        {/* TODO: Add delete review functionality */}
-                        <Button
-                          colorScheme="red"
-                          onClick={() => deleteReview()}
-                        >
-                          Delete
-                        </Button>
-                      </ModalFooter>
-                    </ModalContent>
-                  </Modal>
+            <Fragment>
+              <Flex flexDir="row" mt={5} mb={5}>
+                <Flex flexDir="column" width="200px">
+                  <Text>
+                    {review.first_name} {review.last_name}
+                  </Text>
+                  <Text>{review.rating.toFixed(1)} stars</Text>
+                  <Text width="inherit" isTruncated>
+                    {review.dining_hall_name}
+                  </Text>
                 </Flex>
-              )}
-            </Flex>
+                <Flex flexDir="column" ml="15px" width="1000px">
+                  {review.feedback}
+                </Flex>
+                {user.user_id === review.user_id && (
+                  <Flex ml="15px" flexDir="column" width="80px">
+                    {/* TODO: Populate reviews via mapping */}
+                    <Button
+                      mb={1}
+                      colorScheme="blue"
+                      onClick={() => setEditModalReviewId(review.review_id)}
+                    >
+                      Edit
+                    </Button>
+                    <Modal
+                      isOpen={review.review_id === editModalReviewId}
+                      onClose={() => setEditModalReviewId(null)}
+                      autoFocus={false}
+                    >
+                      <ModalOverlay />
+                      <ModalContent>
+                        <ModalHeader>Edit Review</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                          <Textarea
+                            defaultValue={review.feedback}
+                            onChange={(e) => setEditedFeedback(e.target.value)}
+                          ></Textarea>
+                          <Select
+                            mr="15px"
+                            flex="1"
+                            bg="gray.100"
+                            placeholder="Select your rating..."
+                            onChange={(e) => setEditedRating(e.target.value)}
+                            defaultValue={review.rating}
+                          >
+                            <option value="5">5 stars</option>
+                            <option value="4">4 stars</option>
+                            <option value="3">3 stars</option>
+                            <option value="2">2 stars</option>
+                            <option value="1">1 star</option>
+                          </Select>
+                        </ModalBody>
+
+                        <ModalFooter>
+                          {/* TODO */}
+                          <Button
+                            colorScheme="blue"
+                            onClick={() => editReview()}
+                          >
+                            Save
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+
+                    <Button
+                      colorScheme="red"
+                      onClick={() => setDeleteModalReviewId(review.review_id)}
+                    >
+                      {<DeleteIcon />}
+                    </Button>
+                    <Modal
+                      isOpen={review.review_id === deleteModalReviewId}
+                      onClose={() => setDeleteModalReviewId(null)}
+                      autoFocus={false}
+                    >
+                      <ModalOverlay />
+                      <ModalContent>
+                        <ModalHeader>Delete Review</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                          Are you sure you want to delete your review?
+                        </ModalBody>
+
+                        <ModalFooter>
+                          <Button
+                            colorScheme="blue"
+                            variant="ghost"
+                            mr={3}
+                            // TODO
+                            onClick={() => setDeleteModalReviewId(null)}
+                          >
+                            Cancel
+                          </Button>
+                          {/* TODO: Add delete review functionality */}
+                          <Button
+                            colorScheme="red"
+                            onClick={() => deleteReview()}
+                          >
+                            Delete
+                          </Button>
+                        </ModalFooter>
+                      </ModalContent>
+                    </Modal>
+                  </Flex>
+                )}
+              </Flex>
+              <Divider borderColor="darkgrey" mb={5} />
+            </Fragment>
           );
         })}
-
-        <Divider borderColor="darkgrey" mb={5} />
-        <Flex flexDir="row" mb={5}>
-          <Flex flexDir="column" width="200px">
-            <Text>First Last</Text>
-            <Text>3 stars</Text>
-            <Text isTruncated>Field of Greens at Lincon/Allen (LAR)</Text>
-          </Flex>
-          <Flex flexDir="column" ml="15px">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
-          </Flex>
-        </Flex>
       </List>
     </Flex>
   );

@@ -25,7 +25,6 @@ const App = () => {
         path="/foods/:food_id"
         element={<ProtectedRoute Component={FoodItem} />}
       />
-      {/* <Route path="/foods/:food_id" element={<FoodItem />} /> */}
     </Routes>
   );
 };
