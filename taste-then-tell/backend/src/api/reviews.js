@@ -20,6 +20,29 @@ router.get(
   }),
 );
 
+/* endpoint to get review by review_id */
+router.get(
+  '/:review_id',
+  errorWrap(async (req, res) => {
+    const { review_id } = req.params;
+
+    const QUERY = `SELECT * from Reviews WHERE review_id = ${review_id}`;
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned review', results);
+      } else {
+        sendNotFound(res, 'Review not found');
+      }
+    });
+  }),
+);
+
+
 /* endpoint to get reviews by food id */
 router.get(
   '/food_id/',
