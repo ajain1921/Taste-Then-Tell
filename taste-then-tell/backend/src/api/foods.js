@@ -21,6 +21,26 @@ router.get(
   }),
 );
 
+/* endpoint to search food table by food name */
+router.get(
+  '/search/',
+  errorWrap(async (req, res) => {
+    const { q } = req.query;
+    console.log(q);
+
+    const QUERY = `select food_id, name, GROUP_CONCAT(allergen) as allergens from Foods left join Food_Allergens using(food_id) WHERE name LIKE "%${q}%" group by food_id LIMIT 50`;
+
+    db.query(QUERY, (err, results) => {
+      console.log(QUERY);
+      if (err) {
+        return res.send(err);
+      }
+
+      sendSuccess(res, 'Successfully returned foods that match ' + q, results);
+    });
+  }),
+);
+
 /* get food by food_id */
 router.get(
   '/:food_id',
@@ -39,30 +59,6 @@ router.get(
       } else {
         sendNotFound(res, 'Food not found');
       }
-    });
-  }),
-);
-
-/* endpoint to search food table by food name */
-router.get(
-  '/search_by_name/',
-  errorWrap(async (req, res) => {
-    const { food_name } = req.body;
-    console.log(food_name);
-
-    const QUERY = `SELECT * FROM Foods WHERE name LIKE "%${food_name}%"`;
-
-    db.query(QUERY, (err, results) => {
-      console.log(QUERY);
-      if (err) {
-        return res.send(err);
-      }
-
-      sendSuccess(
-        res,
-        'Successfully returned foods that match ' + food_name,
-        results,
-      );
     });
   }),
 );
