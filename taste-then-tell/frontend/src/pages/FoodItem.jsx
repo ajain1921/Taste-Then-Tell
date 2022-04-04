@@ -4,42 +4,54 @@ import {
   Flex,
   Heading,
   List,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Select,
   Text,
   Textarea,
+  useDisclosure,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { instance } from "../api";
 
 import { StarOutline, StarRate } from "@mui/icons-material";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 const FoodItem = () => {
-  const [foods, setFoods] = useState([]);
   const [currFood, setCurrFood] = useState([]);
-  const { pathname } = useLocation();
-  const foodId = Number(pathname.match(/\/foods\/(\d+)/)?.[1]);
+  const { food_id } = useParams();
+
+  const {
+    isOpen: isDeleteOpen,
+    onOpen: onDeleteOpen,
+    onClose: onDeleteClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isEditOpen,
+    onOpen: onEditOpen,
+    onClose: onEditClose,
+  } = useDisclosure();
+
+  // const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await instance.get("/foods");
-      setFoods(res.data.result);
+      const res = await instance.get(`/foods/${food_id}`);
+      setCurrFood(res.data.result[0]);
     };
     fetchData();
   }, []);
-  console.log(foods);
-  console.log(currFood);
 
   return (
-    // <Center flexDirection="column" w="80%" m="auto" pt="20px">
-    //     {foods.map(({ food_id, name, allergens }) => (
-    //       food_id === 1 && <Text>{food_id} {name} {allergens}</Text>
-    //     ))}
-    // </Center>
-
     <Flex flexDirection="column" w="75%" m="auto" pt="20px" display="flex">
-      {/* TODO: Connect with food Name */}
-      <Heading align="center">Food Name</Heading>
+      <Heading align="center">{currFood.name}</Heading>
 
       <Flex flexDir="row">
         <Flex mt={5} flexDir="column" flex="1">
@@ -121,6 +133,7 @@ const FoodItem = () => {
             placeholder="Select your dining hall..."
           >
             {/* TODO: Map the dining halls here again */}
+            {}
             <option value="dining_hall_id">
               Field of Greens at Lincon/Allen (LAR)
             </option>
@@ -140,7 +153,7 @@ const FoodItem = () => {
             <option value="2">2 stars</option>
             <option value="1">1 star</option>
           </Select>
-          <Button colorScheme="blue">Add Review</Button>
+          <Button colorScheme="green">Add Review</Button>
         </Flex>
         {/* TODO: Some type of onSubmit to add into the DB */}
         <Textarea
@@ -173,12 +186,73 @@ const FoodItem = () => {
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur.
           </Flex>
+          <Flex ml="15px" flexDir="column" width="200px">
+            {/* TODO: Populate reviews via mapping */}
+            <Button mb={1} colorScheme="blue" onClick={onEditOpen}>
+              Edit
+            </Button>
+            <Modal isOpen={isEditOpen} onClose={onEditClose} autoFocus={false}>
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Edit Review</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  {/* TODO: insert the review text */}
+                  <Textarea>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur.
+                  </Textarea>
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button colorScheme="blue" onClick={onEditClose}>
+                    Save
+                  </Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+
+            <Button colorScheme="red" onClick={onDeleteOpen}>
+              {<DeleteIcon />}
+            </Button>
+            <Modal
+              isOpen={isDeleteOpen}
+              onClose={onDeleteClose}
+              autoFocus={false}
+            >
+              <ModalOverlay />
+              <ModalContent>
+                <ModalHeader>Delete Review</ModalHeader>
+                <ModalCloseButton />
+                <ModalBody>
+                  Are you sure you want to delete your review?
+                </ModalBody>
+
+                <ModalFooter>
+                  <Button
+                    colorScheme="blue"
+                    variant="ghost"
+                    mr={3}
+                    onClick={onDeleteClose}
+                  >
+                    Cancel
+                  </Button>
+                  {/* TODO: Add delete review functionality */}
+                  <Button colorScheme="red">Delete</Button>
+                </ModalFooter>
+              </ModalContent>
+            </Modal>
+          </Flex>
         </Flex>
         <Divider borderColor="darkgrey" mb={5} />
 
         <Flex flexDir="row" mb={5}>
           <Flex flexDir="column" width="200px">
-            <Text>username</Text>
+            <Text>First Last</Text>
             <Text>3 stars</Text>
             <Text isTruncated>Field of Greens at Lincon/Allen (LAR)</Text>
           </Flex>
