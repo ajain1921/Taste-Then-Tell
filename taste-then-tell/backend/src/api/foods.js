@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../db');
 const { errorWrap } = require('../middleware');
-const { sendSuccess } = require('../utils');
+const { sendSuccess, sendNotFound } = require('../utils');
 
 /* endpoint to get all the foods */
 router.get(
@@ -58,7 +58,11 @@ router.get(
         return res.send(err);
       }
 
-      sendSuccess(res, 'Successfully returned foods that match ' + food_name, results);
+      sendSuccess(
+        res,
+        'Successfully returned foods that match ' + food_name,
+        results,
+      );
     });
   }),
 );
@@ -82,7 +86,11 @@ router.get(
         return res.send(err);
       }
 
-      sendSuccess(res, 'Successfully returned foods that do not contain ' + allergen, results);
+      sendSuccess(
+        res,
+        'Successfully returned foods that do not contain ' + allergen,
+        results,
+      );
     });
   }),
 );
