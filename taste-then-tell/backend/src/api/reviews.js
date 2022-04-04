@@ -148,9 +148,9 @@ router.put(
 
 /* endpoint to delete a review */
 router.delete(
-  '/delete_review/',
+  '/delete/:review_id',
   errorWrap(async (req, res) => {
-    const { review_id } = req.body;
+    const { review_id } = req.params;
     console.log('review_id: ' + review_id);
 
     const QUERY = `DELETE FROM Reviews WHERE review_id = ${review_id}`;

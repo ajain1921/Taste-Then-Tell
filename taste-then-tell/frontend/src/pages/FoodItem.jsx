@@ -34,6 +34,10 @@ const FoodItem = () => {
   const [selectedDiningHall, setSelectedDiningHall] = useState(null);
   const [selectedRating, setSelectedRating] = useState(null);
   const [feedback, setFeedback] = useState(null);
+  const [editModalReviewId, setEditModalReviewId] = useState(null);
+  const [deleteModalReviewId, setDeleteModalReviewId] = useState(null);
+  const [editedRating, setEditedRating] = useState(null);
+  const [editedFeedback, setEditedFeedback] = useState(null);
 
   const {
     isOpen: isDeleteOpen,
@@ -59,7 +63,28 @@ const FoodItem = () => {
     await instance.post("/reviews/add_review/", body);
     console.log(body);
   };
-  //{student_id, food_id, dining_hall_id, rating, review}
+
+  const editReview = async () => {
+    const bodyRating = {
+      review_id: editModalReviewId,
+      rating: editedRating,
+    };
+    const bodyFeedback = {
+      review_id: editModalReviewId,
+      review: editedFeedback,
+    };
+    if (editedRating)
+      await instance.put("/reviews/edit_review_rating", bodyRating);
+    if (editedFeedback)
+      await instance.put("/reviews/edit_review_text", bodyFeedback);
+    setEditModalReviewId(null);
+  };
+
+  const deleteReview = async () => {
+    await instance.delete(`/reviews/delete/${deleteModalReviewId}`);
+    console.log({ deleteModalReviewId });
+    setDeleteModalReviewId(null);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -229,12 +254,16 @@ const FoodItem = () => {
               {user.user_id === review.user_id && (
                 <Flex ml="15px" flexDir="column" width="80px">
                   {/* TODO: Populate reviews via mapping */}
-                  <Button mb={1} colorScheme="blue" onClick={onEditOpen}>
+                  <Button
+                    mb={1}
+                    colorScheme="blue"
+                    onClick={() => setEditModalReviewId(review.review_id)}
+                  >
                     Edit
                   </Button>
                   <Modal
-                    isOpen={isEditOpen}
-                    onClose={onEditClose}
+                    isOpen={review.review_id === editModalReviewId}
+                    onClose={() => setEditModalReviewId(null)}
                     autoFocus={false}
                   >
                     <ModalOverlay />
@@ -242,23 +271,44 @@ const FoodItem = () => {
                       <ModalHeader>Edit Review</ModalHeader>
                       <ModalCloseButton />
                       <ModalBody>
-                        <Textarea defaultValue={review.feedback}></Textarea>
+                        <Textarea
+                          defaultValue={review.feedback}
+                          onChange={(e) => setEditedFeedback(e.target.value)}
+                        ></Textarea>
+                        <Select
+                          mr="15px"
+                          flex="1"
+                          bg="gray.100"
+                          placeholder="Select your rating..."
+                          onChange={(e) => setEditedRating(e.target.value)}
+                          defaultValue={review.rating}
+                        >
+                          <option value="5">5 stars</option>
+                          <option value="4">4 stars</option>
+                          <option value="3">3 stars</option>
+                          <option value="2">2 stars</option>
+                          <option value="1">1 star</option>
+                        </Select>
                       </ModalBody>
 
                       <ModalFooter>
-                        <Button colorScheme="blue" onClick={onEditClose}>
+                        {/* TODO */}
+                        <Button colorScheme="blue" onClick={() => editReview()}>
                           Save
                         </Button>
                       </ModalFooter>
                     </ModalContent>
                   </Modal>
 
-                  <Button colorScheme="red" onClick={onDeleteOpen}>
+                  <Button
+                    colorScheme="red"
+                    onClick={() => setDeleteModalReviewId(review.review_id)}
+                  >
                     {<DeleteIcon />}
                   </Button>
                   <Modal
-                    isOpen={isDeleteOpen}
-                    onClose={onDeleteClose}
+                    isOpen={review.review_id === deleteModalReviewId}
+                    onClose={() => setDeleteModalReviewId(null)}
                     autoFocus={false}
                   >
                     <ModalOverlay />
@@ -274,12 +324,18 @@ const FoodItem = () => {
                           colorScheme="blue"
                           variant="ghost"
                           mr={3}
-                          onClick={onDeleteClose}
+                          // TODO
+                          onClick={() => setDeleteModalReviewId(null)}
                         >
                           Cancel
                         </Button>
                         {/* TODO: Add delete review functionality */}
-                        <Button colorScheme="red">Delete</Button>
+                        <Button
+                          colorScheme="red"
+                          onClick={() => deleteReview()}
+                        >
+                          Delete
+                        </Button>
                       </ModalFooter>
                     </ModalContent>
                   </Modal>
