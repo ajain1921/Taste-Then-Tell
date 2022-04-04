@@ -17,9 +17,11 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../api";
 
 const Foods = () => {
+  const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -61,7 +63,13 @@ const Foods = () => {
             </Thead>
             <Tbody>
               {foods.map(({ food_id, name, allergens }) => (
-                <Tr>
+                <Tr
+                  onClick={() => navigate(`/foods/${food_id}`)}
+                  _hover={{
+                    color: "teal.500",
+                    cursor: "pointer",
+                  }}
+                >
                   <Td isNumeric>{food_id}</Td>
                   <Td>{name}</Td>
                   <Td>{allergens}</Td>
