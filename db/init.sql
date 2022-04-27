@@ -94,6 +94,7 @@ CREATE TABLE Reviews (
     dining_hall_id INT,
     rating REAL,
     feedback VARCHAR(255),
+    contains_profanity BOOLEAN,
     FOREIGN KEY (user_id) REFERENCES Students(user_id) ON DELETE CASCADE,
     FOREIGN KEY (food_id) REFERENCES Foods(food_id) ON DELETE CASCADE,
     FOREIGN KEY (dining_hall_id) REFERENCES Dining_Halls(dining_hall_id) ON
@@ -127,6 +128,12 @@ CREATE TABLE Food_Allergens (
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/food_allergens.csv' INTO TABLE Food_Allergens FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+DROP TABLE IF EXISTS `Profanity`;
+
+CREATE TABLE Profanity (word VARCHAR(100)) ENGINE = InnoDB DEFAULT CHARSET = latin1;
+
+LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/profanity.csv' INTO TABLE Profanity FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */
 ;
