@@ -90,4 +90,53 @@ router.get(
   }),
 );
 
+/* endpoint to get the average rating of a food given its food_id. Join with the Reviews table to figure this out*/
+// NOTE that this is the average rating of that food_id accross ALL dining halls.
+router.get(
+  '/get_average_rating/:food_id',
+  errorWrap(async (req, res) => {
+    const { food_id } = req.params;
+
+    const QUERY = `SELECT AVG(rating) as averageRating FROM Reviews WHERE food_id = ${food_id}`;
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned average rating', results);
+      } else {
+        sendNotFound(res, 'Food not found');
+      }
+    }
+    );
+  }),
+);
+
+/* endpoint to get the average rating of a food AT A SPECIFIC DINING HALL given it's food_id and dining_hall_id. Join with the Reviews table to figure this out*/
+
+router.get(
+  '/get_average_rating_given/dining_hall',
+  errorWrap(async (req, res) => {
+    const { food_id, dining_hall_id } = req.body;
+
+    const QUERY = `SELECT AVG(rating) as averageRating FROM Reviews WHERE food_id = ${food_id} AND dining_hall_id = ${dining_hall_id}`;
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned average rating', results);
+      } else {
+        sendNotFound(res, 'Food & dining hall combo not found');
+      }
+
+    }
+    );
+  }),
+);
+
 module.exports = router;
