@@ -41,4 +41,30 @@ router.get(
     }),
 );
 
+/* endpoint to get a university_name given a university_id */
+router.get(
+    '/get_university_name/:university_id',
+    errorWrap(async (req, res) => {
+        const { university_id } = req.params;
+
+        const QUERY = `SELECT name from Universities WHERE university_id = ${university_id}`;
+
+        db.query(QUERY, (err, results) => {
+            console.log(QUERY);
+
+            if (err) {
+                return res.send(err);
+            }
+
+            if (results.length === 0) {
+                return sendNotFound(res, `No university found with university_id: ${university_id}`);
+            } else {
+                sendSuccess(res, `Successfully returned a university_name given a university_id: ${university_id}`, results);
+            }
+
+            
+        });
+    }),
+);
+
 module.exports = router;
