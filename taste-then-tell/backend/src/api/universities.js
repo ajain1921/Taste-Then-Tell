@@ -20,7 +20,25 @@ router.get(
   }),
 );
 
+/* endpoint to get all dining_halls and their average ratings given a university_id */
+router.get(
+    '/get_average_ratings_for_dining_halls/:university_id',
+    errorWrap(async (req, res) => {
+        const { university_id } = req.params;
+        console.log(university_id);
 
+        const QUERY = `SELECT d.dining_hall_id, d.name as dining_hall_name, AVG(r.rating) as average_rating FROM Dining_Halls d LEFT JOIN Reviews r USING(dining_hall_id) WHERE d.university_id = ${university_id} GROUP BY d.dining_hall_id`;
 
+        db.query(QUERY, (err, results) => {
+            console.log(QUERY);
+
+            if (err) {
+                return res.send(err);
+            }
+
+            sendSuccess(res, `Successfully returned dining_halls and their average ratings given a university_id: ${university_id}`, results);
+        });
+    }),
+);
 
 module.exports = router;
