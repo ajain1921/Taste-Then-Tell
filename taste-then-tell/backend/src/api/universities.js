@@ -67,4 +67,23 @@ router.get(
     }),
 );
 
+/* endpoint to get the average rating and names of Universities by getting the average ratings of all dining halls in that university.*/
+router.get(
+    '/get_average_ratings_for_universities/',
+    errorWrap(async (req, res) => {
+        const QUERY = `SELECT u.name, AVG(r.rating) as average_rating FROM Reviews r NATURAL JOIN Dining_Halls d JOIN Universities u USING(university_id) GROUP BY u.university_id ORDER BY average_rating DESC`;
+
+        db.query(QUERY, (err, results) => {
+            console.log(QUERY);
+
+            if (err) {
+                return res.send(err);
+            }
+
+            sendSuccess(res, `Successfully returned average rating and names of Universities.`, results);
+        });
+    }),
+);
+
+
 module.exports = router;

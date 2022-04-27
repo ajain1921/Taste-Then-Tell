@@ -217,7 +217,7 @@ router.get(
   }),
 );
 
-//endpoint to return the following things
+//endpoint to return the following things given a food_id
 // the "num_five_stars" the number of reviews with a rating of 5
 // the "num_four_stars" the number of reviews with a rating >= 4 and < 5
 // the "num_three_stars" the number of reviews with a rating >= 3 and <4
