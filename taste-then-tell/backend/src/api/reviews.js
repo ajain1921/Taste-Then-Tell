@@ -53,7 +53,7 @@ router.post(
     const { student_id, food_id, dining_hall_id, rating, review } = req.body;
 
     console.log(
-        ' student_id: ' +
+      ' student_id: ' +
         student_id +
         ' food_id: ' +
         food_id +
@@ -73,11 +73,7 @@ router.post(
         return res.send(err);
       }
 
-      sendSuccess(
-        res,
-        "Successfully added review",
-        results,
-      );
+      sendSuccess(res, 'Successfully added review', results);
     });
   }),
 );
@@ -231,8 +227,7 @@ router.get(
     const { food_id } = req.params;
     console.log('food_id: ' + food_id);
 
-    const QUERY = 
-    `SELECT 
+    const QUERY = `SELECT 
       MAX(subquery.num_zero_stars) as num_zero_stars,
       MAX(subquery.num_one_stars) as num_one_stars,
       MAX(subquery.num_two_stars) as num_two_stars,
@@ -280,10 +275,13 @@ router.get(
         return res.send(err);
       }
 
-      sendSuccess(res, 'Successfully returned food review star counts', results);
+      sendSuccess(
+        res,
+        'Successfully returned food review star counts',
+        results,
+      );
     });
   }),
 );
-
 
 module.exports = router;

@@ -26,6 +26,7 @@ import { useAuth } from "../contexts/context";
 
 const FoodItem = () => {
   const [currFood, setCurrFood] = useState([]);
+  const [ratings, setRatings] = useState([]);
   const [diningHalls, setDiningHalls] = useState([]);
   const [reviews, setReviews] = useState([]);
   const { food_id } = useParams();
@@ -78,6 +79,16 @@ const FoodItem = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      const res = await instance.get(
+        `/reviews/get_food_review_stars/${food_id}`
+      );
+      setRatings(res.data.result);
+    };
+    fetchData();
+  }, [refresh]);
+
+  useEffect(() => {
+    const fetchData = async () => {
       const res = await instance.get(`/foods/${food_id}`);
       setCurrFood(res.data.result[0]);
     };
@@ -109,15 +120,14 @@ const FoodItem = () => {
           <Heading size="lg" align="center">
             Information
           </Heading>
-          {/* TODO: Need name of university that offers this dish (or we remove this) */}
           <Heading size="md" mt={3}>
             University Name
           </Heading>
           <List mt={3} spacing={1}>
             <Text>Offered by the following Dining Halls:</Text>
-            {/* TODO: Map function to display the dining halls this is served at */}
-            <Text>Field of Greens at Lincon/Allen (LAR)</Text>
-            <Text>Field of Greens at Lincon/Allen (LAR)</Text>
+            {diningHalls.map((diningHall) => {
+              return <Text>{diningHall.dining_hall_name}</Text>;
+            })}
           </List>
           <Heading size="md" mt={3}>
             Allergens:
@@ -131,41 +141,52 @@ const FoodItem = () => {
         {/* TODO: Insert appropriate rating scores */}
         <Flex mt={5} flexDir="column" align="center" flex="1">
           <Heading size="lg">Ratings Overview</Heading>
-          <Flex mt={3} align="center">
-            <StarRate />
-            <StarRate />
-            <StarRate />
-            <StarRate />
-            <StarRate />: 200
-          </Flex>
-          <Flex mt={3} align="center">
-            <StarRate />
-            <StarRate />
-            <StarRate />
-            <StarRate />
-            <StarOutline />: 50
-          </Flex>
-          <Flex mt={3} align="center">
-            <StarRate />
-            <StarRate />
-            <StarRate />
-            <StarOutline />
-            <StarOutline />: 22
-          </Flex>
-          <Flex mt={3} align="center">
-            <StarRate />
-            <StarRate />
-            <StarOutline />
-            <StarOutline />
-            <StarOutline />: 18
-          </Flex>
-          <Flex mt={3} align="center">
-            <StarRate />
-            <StarOutline />
-            <StarOutline />
-            <StarOutline />
-            <StarOutline />: 79
-          </Flex>
+          {ratings.map((ratings) => (
+            <Fragment>
+              <Flex mt={3} align="center">
+                <StarRate />
+                <StarRate />
+                <StarRate />
+                <StarRate />
+                <StarRate />: {ratings.num_five_stars}
+              </Flex>
+              <Flex mt={3} align="center">
+                <StarRate />
+                <StarRate />
+                <StarRate />
+                <StarRate />
+                <StarOutline />: {ratings.num_four_stars}
+              </Flex>
+              <Flex mt={3} align="center">
+                <StarRate />
+                <StarRate />
+                <StarRate />
+                <StarOutline />
+                <StarOutline />: {ratings.num_three_stars}
+              </Flex>
+              <Flex mt={3} align="center">
+                <StarRate />
+                <StarRate />
+                <StarOutline />
+                <StarOutline />
+                <StarOutline />: {ratings.num_two_stars}
+              </Flex>
+              <Flex mt={3} align="center">
+                <StarRate />
+                <StarOutline />
+                <StarOutline />
+                <StarOutline />
+                <StarOutline />: {ratings.num_one_stars}
+              </Flex>
+              <Flex mt={3} align="center">
+                <StarOutline />
+                <StarOutline />
+                <StarOutline />
+                <StarOutline />
+                <StarOutline />: {ratings.num_zero_stars}
+              </Flex>
+            </Fragment>
+          ))}
         </Flex>
       </Flex>
 
@@ -204,8 +225,8 @@ const FoodItem = () => {
             <option value="3">3 stars</option>
             <option value="2">2 stars</option>
             <option value="1">1 star</option>
+            <option value="0">1 star</option>
           </Select>
-          {/* TODO: Some type of onSubmit to add into the DB */}
           <Button colorScheme="green" onClick={() => createReview()}>
             Add Review
           </Button>
@@ -221,7 +242,6 @@ const FoodItem = () => {
 
       <Divider borderColor="darkgrey" mt={5} mb={5} />
 
-      {/* TODO: Add number of reviews*/}
       <Heading align="center" size="lg">
         Published Reviews
       </Heading>
@@ -283,7 +303,6 @@ const FoodItem = () => {
                         </ModalBody>
 
                         <ModalFooter>
-                          {/* TODO */}
                           <Button
                             colorScheme="blue"
                             onClick={() => editReview()}

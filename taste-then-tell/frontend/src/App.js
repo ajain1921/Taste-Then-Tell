@@ -4,6 +4,7 @@ import Foods from "./pages/Foods";
 import FoodItem from "./pages/FoodItem";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import PersonalReviews from "./pages/PersonalReviews";
 import Universities from "./pages/Universities";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 
@@ -12,6 +13,10 @@ const App = () => {
     <Routes>
       <Route path="" element={<ProtectedRoute Component={Login} />} />
       <Route path="/profile" element={<ProtectedRoute Component={Profile} />} />
+      <Route
+        path="/profile/reviews"
+        element={<ProtectedRoute Component={PersonalReviews} />}
+      />
       <Route
         path="/dininghalls"
         element={<ProtectedRoute Component={DiningHalls} />}
