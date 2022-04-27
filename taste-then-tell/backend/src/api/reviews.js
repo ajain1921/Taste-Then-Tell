@@ -217,4 +217,73 @@ router.get(
   }),
 );
 
+//endpoint to return the following things
+// the "num_five_stars" the number of reviews with a rating of 5
+// the "num_four_stars" the number of reviews with a rating >= 4 and < 5
+// the "num_three_stars" the number of reviews with a rating >= 3 and <4
+// the "num_two_stars" the number of reviews with a rating >= 2 and <3
+// the "num_one_stars" the number of reviews with a rating >= 1 and <2
+// the "num_zero_stars" the number of reviews with a rating < 1
+
+router.get(
+  '/get_food_review_stars/:food_id',
+  errorWrap(async (req, res) => {
+    const { food_id } = req.params;
+    console.log('food_id: ' + food_id);
+
+    const QUERY = 
+    `SELECT 
+      MAX(subquery.num_zero_stars) as num_zero_stars,
+      MAX(subquery.num_one_stars) as num_one_stars,
+      MAX(subquery.num_two_stars) as num_two_stars,
+      MAX(subquery.num_three_stars) as num_three_stars,
+      MAX(subquery.num_four_stars) as num_four_stars,
+      MAX(subquery.num_five_stars) as num_five_stars
+    FROM 
+        (SELECT -1 AS num_zero_stars, -1 AS num_one_stars, -1 AS num_two_stars, -1 AS num_three_stars, -1 AS num_four_stars, COUNT(*) AS num_five_stars
+        FROM Reviews
+        WHERE rating = 5 AND food_id = ${food_id}
+
+        UNION
+
+        SELECT -1 AS num_zero_stars, -1 AS num_one_stars, -1 AS num_two_stars, -1 AS num_three_stars, COUNT(*) AS num_four_stars, -1 AS num_five_stars
+        FROM Reviews
+        WHERE rating >= 4 AND rating < 5 AND food_id = ${food_id}
+
+        UNION
+
+        SELECT -1 AS num_zero_stars, -1 AS num_one_stars, -1 AS num_two_stars, COUNT(*) AS num_three_stars, -1 AS num_four_stars, -1 AS num_five_stars
+        FROM Reviews
+        WHERE rating >= 3 AND rating < 4 AND food_id = ${food_id}
+
+        UNION
+
+        SELECT -1 AS num_zero_stars, -1 AS num_one_stars, COUNT(*) AS num_two_stars, -1 AS num_three_stars, -1 AS num_four_stars, -1 AS num_five_stars
+        FROM Reviews
+        WHERE rating >= 2 AND rating < 3 AND food_id = ${food_id}
+
+        UNION 
+
+        SELECT -1 AS num_zero_stars, COUNT(*) AS num_one_stars, -1 AS num_two_stars, -1 AS num_three_stars, -1 AS num_four_stars, -1 AS num_five_stars
+        FROM Reviews
+        WHERE rating >= 1 AND rating < 2 AND food_id = ${food_id}
+
+        UNION
+
+        SELECT COUNT(*) AS num_zero_stars, -1 AS num_one_stars, -1 AS num_two_stars, -1 AS num_three_stars, -1 AS num_four_stars, -1 AS num_five_stars
+        FROM Reviews
+        WHERE rating < 1 AND food_id = ${food_id}) AS subquery`;
+
+    db.query(QUERY, (err, results) => {
+      console.log(QUERY);
+      if (err) {
+        return res.send(err);
+      }
+
+      sendSuccess(res, 'Successfully returned food review star counts', results);
+    });
+  }),
+);
+
+
 module.exports = router;
