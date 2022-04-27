@@ -22,4 +22,22 @@ router.get(
     }),
 );
 
+/* endpoint to get Schedlues that match a given "days" and "dining_hall_id". Order by meal_type*/
+router.get(
+    '/dining_halls/',
+    errorWrap(async (req, res) => {
+        const { days, dining_hall_id } = req.body;
+
+        const QUERY = `SELECT * FROM Schedules WHERE days = '${days}' AND dining_hall_id = ${dining_hall_id} ORDER BY meal_type`;
+        
+        db.query(QUERY, (err, results) => {
+            console.log(QUERY);
+            if (err) {
+                return res.send(err);
+            }
+
+            sendSuccess(res, `Successfully returned Schedules that match days: "${days}" and dining_hall_id: "${dining_hall_id}"`, results);
+        });
+    }),
+);
 module.exports = router;
