@@ -42,4 +42,24 @@ router.post(
   }),
 );
 
+/* endpoint to add a student/user */
+router.post(
+  '/add_student/',
+  errorWrap(async (req, res) => {
+      const { university_id, first_name, last_name, email, password } = req.body;
+
+    console.log("university_id: " + university_id + " first_name: " + first_name + " last_name: " + last_name + " email: " + email + " password: " + password);
+
+    const QUERY = `INSERT INTO Students (university_id, first_name, last_name, email, password) VALUES (${university_id}, \"${first_name}\", \"${last_name}\", \"${email}\", \"${password}\")`;
+    db.query(QUERY, (err, results) => {
+      console.log(QUERY);
+      if (err) {
+        return res.send(err);
+      }
+      
+      sendSuccess(res, "Successfully added student", results);
+    });
+  }),
+);
+
 module.exports = router;
