@@ -213,6 +213,29 @@ router.get(
   }),
 );
 
+/* endpoint to get the reviews for a user given that user's email and password, but using params instead. */
+router.get(
+  '/user_reviews/:email/:password',
+  errorWrap(async (req, res) => {
+    const { email, password } = req.params;
+
+    const QUERY = `CALL getYourReviews(\"${email}\", \"${password}\")`;
+    console.log(QUERY);
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned user review(s)', results);
+      } else {
+        sendNotFound(res, `could not retrieve reviews for this user: ${email}`);
+      }
+    });
+  }),
+);
+
+
 //endpoint to return the following things given a food_id
 // the "num_five_stars" the number of reviews with a rating of 5
 // the "num_four_stars" the number of reviews with a rating >= 4 and < 5
