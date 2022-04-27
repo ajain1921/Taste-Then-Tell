@@ -225,7 +225,7 @@ const FoodItem = () => {
             <option value="3">3 stars</option>
             <option value="2">2 stars</option>
             <option value="1">1 star</option>
-            <option value="0">1 star</option>
+            <option value="0">0 star</option>
           </Select>
           <Button colorScheme="green" onClick={() => createReview()}>
             Add Review
@@ -254,7 +254,7 @@ const FoodItem = () => {
                   <Text>
                     {review.first_name} {review.last_name}
                   </Text>
-                  <Text>{review.rating.toFixed(1)} stars</Text>
+                  <Text>{review.rating.toFixed(0)} stars</Text>
                   <Text width="inherit" isTruncated>
                     {review.dining_hall_name}
                   </Text>
@@ -292,13 +292,14 @@ const FoodItem = () => {
                             bg="gray.100"
                             placeholder="Select your rating..."
                             onChange={(e) => setEditedRating(e.target.value)}
-                            defaultValue={review.rating}
+                            defaultValue={review.rating.toFixed(0)}
                           >
                             <option value="5">5 stars</option>
                             <option value="4">4 stars</option>
                             <option value="3">3 stars</option>
                             <option value="2">2 stars</option>
                             <option value="1">1 star</option>
+                            <option value="0">0 star</option>
                           </Select>
                         </ModalBody>
 

@@ -67,7 +67,7 @@ const Universities = () => {
             {universityData.map(({ name, average_rating }) => (
               <Tr>
                 <Td>{name}</Td>
-                <Td textAlign="center">{average_rating.toFixed(1)}</Td>
+                <Td textAlign="center">{average_rating.toFixed(0)}</Td>
               </Tr>
             ))}
           </Tbody>
