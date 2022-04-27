@@ -27,7 +27,7 @@ router.get(
     const { food_id } = req.params;
     console.log(food_id);
 
-    const QUERY = `SELECT review_id, user_id, first_name, last_name, food_id, f.name as food_name, dining_hall_id, d.name as dining_hall_name, rating, feedback 
+    const QUERY = `SELECT review_id, user_id, first_name, last_name, food_id, f.name as food_name, dining_hall_id, d.name as dining_hall_name, rating, feedback, contains_profanity
     FROM Reviews r LEFT JOIN Students s using(user_id) LEFT JOIN Foods f using(food_id) LEFT JOIN Dining_Halls d using(dining_hall_id) WHERE f.food_id= ${food_id}`;
 
     db.query(QUERY, (err, results) => {
@@ -70,7 +70,7 @@ router.post(
         review,
     );
 
-    const QUERY = `INSERT INTO Reviews VALUES (${review_id}, ${student_id}, ${food_id}, ${dining_hall_id}, ${rating}, \"${review}\")`;
+    const QUERY = `INSERT INTO Reviews VALUES (${review_id}, ${student_id}, ${food_id}, ${dining_hall_id}, ${rating}, \"${review}\", 0)`;
 
     db.query(QUERY, (err, results) => {
       console.log(QUERY);
