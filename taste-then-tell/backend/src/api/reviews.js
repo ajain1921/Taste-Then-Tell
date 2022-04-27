@@ -50,14 +50,9 @@ router.get(
 router.post(
   '/add_review/',
   errorWrap(async (req, res) => {
-    // (student_id == user_id) from the database
-    // (review == feedback) from the database
     const { student_id, food_id, dining_hall_id, rating, review } = req.body;
-    const review_id = Math.floor(Math.random() * 1000000) + 10000; //this is bad we're totally going to override old reviews by accident
 
     console.log(
-      'review_id: ' +
-        review_id +
         ' student_id: ' +
         student_id +
         ' food_id: ' +
@@ -70,7 +65,7 @@ router.post(
         review,
     );
 
-    const QUERY = `INSERT INTO Reviews VALUES (${review_id}, ${student_id}, ${food_id}, ${dining_hall_id}, ${rating}, \"${review}\", 0)`;
+    const QUERY = `INSERT INTO Reviews (user_id, food_id, dining_hall_id, rating, feedback) VALUES (${student_id}, ${food_id}, ${dining_hall_id}, ${rating}, \"${review}\")`;
 
     db.query(QUERY, (err, results) => {
       console.log(QUERY);
@@ -80,7 +75,7 @@ router.post(
 
       sendSuccess(
         res,
-        'Successfully added review with review_id: ' + review_id,
+        "Successfully added review",
         results,
       );
     });

@@ -62,4 +62,25 @@ router.post(
   }),
 );
 
+/* endpoint to get a student/user by user_id */
+router.get(
+  '/get_student/:user_id',
+  errorWrap(async (req, res) => {
+    const { user_id } = req.params;
+    console.log(user_id);
+
+    const QUERY = `SELECT * from Students WHERE user_id = ${user_id}`;
+
+    db.query(QUERY, (err, results) => {
+      console.log(QUERY);
+
+      if (err) {
+        return res.send(err);
+      }
+
+      sendSuccess(res, `Successfully returned user with user_id ${user_id}`, results);
+    });
+  }),
+);
+
 module.exports = router;
