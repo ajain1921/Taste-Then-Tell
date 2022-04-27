@@ -195,4 +195,26 @@ router.get(
   }),
 );
 
+/* endppoint to get the reviews for a user given that user's email and password */ //note this is ultra-secure
+router.get(
+  '/user_reviews',
+  errorWrap(async (req, res) => {
+    const { email, password } = req.body;
+
+    const QUERY = `CALL getYourReviews(\"${email}\", \"${password}\")`;
+    console.log(QUERY);
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned user review(s)', results);
+      } else {
+        sendNotFound(res, 'Could not retrieve reviews for this user');
+      }
+    });
+  }),
+);
+
 module.exports = router;
