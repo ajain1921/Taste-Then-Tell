@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import PersonalReviews from "./pages/PersonalReviews";
 import Universities from "./pages/Universities";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
+import Schedule from "./pages/Schedule";
 
 const App = () => {
   return (
@@ -29,6 +30,10 @@ const App = () => {
       <Route
         path="/foods/:food_id"
         element={<ProtectedRoute Component={FoodItem} />}
+      />
+      <Route
+        path="/schedule"
+        element={<ProtectedRoute Component={Schedule} />}
       />
     </Routes>
   );
