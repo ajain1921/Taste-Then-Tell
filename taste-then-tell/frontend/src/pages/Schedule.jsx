@@ -24,15 +24,16 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { instance } from "../api";
 import { useAuth } from "../contexts/context";
 
 const Schedule = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [DH, setDH] = useState([]);
   const [foods, setFoods] = useState([]);
   const [selectedDH, setSelectedDH] = useState("");
-  const [universityData, setUniversityData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -97,8 +98,14 @@ const Schedule = () => {
               <Tbody>
                 {foods
                   .filter(({ meal_type }) => meal_type === "Breakfast")
-                  .map(({ name, avg_rating }) => (
-                    <Tr>
+                  .map(({ name, avg_rating, food_id }) => (
+                    <Tr
+                      onClick={() => navigate(`/foods/${food_id}`)}
+                      _hover={{
+                        color: "teal.500",
+                        cursor: "pointer",
+                      }}
+                    >
                       <Td w="80%">{name}</Td>
                       <Td w="20%">{avg_rating.toFixed(1)}</Td>
                     </Tr>
@@ -124,8 +131,14 @@ const Schedule = () => {
               <Tbody>
                 {foods
                   .filter(({ meal_type }) => meal_type === "Lunch")
-                  .map(({ name, avg_rating }) => (
-                    <Tr>
+                  .map(({ name, avg_rating, food_id }) => (
+                    <Tr
+                      onClick={() => navigate(`/foods/${food_id}`)}
+                      _hover={{
+                        color: "teal.500",
+                        cursor: "pointer",
+                      }}
+                    >
                       <Td>{name}</Td>
                       <Td>{avg_rating.toFixed(1)}</Td>
                     </Tr>
@@ -151,8 +164,14 @@ const Schedule = () => {
               <Tbody>
                 {foods
                   .filter(({ meal_type }) => meal_type === "Dinner")
-                  .map(({ name, avg_rating }) => (
-                    <Tr>
+                  .map(({ name, avg_rating, food_id }) => (
+                    <Tr
+                      onClick={() => navigate(`/foods/${food_id}`)}
+                      _hover={{
+                        color: "teal.500",
+                        cursor: "pointer",
+                      }}
+                    >
                       <Td>{name}</Td>
                       <Td>{avg_rating.toFixed(1)}</Td>
                     </Tr>

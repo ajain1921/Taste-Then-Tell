@@ -7,10 +7,11 @@ const ProtectedRoute = ({ Component }) => {
   const { user } = useAuth();
   const location = useLocation();
   const isLogin = location.pathname === "/";
+  const isSignUp = location.pathname === "/signup";
 
-  if (!user && !isLogin) {
+  if (!user && !isLogin && !isSignUp) {
     return <Navigate to="/" />;
-  } else if (user && isLogin) {
+  } else if (user && (isLogin || isSignUp)) {
     return <Navigate to="/profile" />;
   }
 

@@ -8,6 +8,7 @@ import PersonalReviews from "./pages/PersonalReviews";
 import Universities from "./pages/Universities";
 import ProtectedRoute from "./wrappers/ProtectedRoute";
 import Schedule from "./pages/Schedule";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         path="/schedule"
         element={<ProtectedRoute Component={Schedule} />}
       />
+      <Route path="/signup" element={<ProtectedRoute Component={SignUp} />} />
     </Routes>
   );
 };

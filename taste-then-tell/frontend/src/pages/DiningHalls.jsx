@@ -115,7 +115,7 @@ const DiningHalls = () => {
                         <Tr>
                           <Td>{university_name}</Td>
                           <Td>{dining_hall_name}</Td>
-                          <Td isNumeric>{avgRating.toFixed(0)}</Td>
+                          <Td isNumeric>{avgRating.toFixed(1)}</Td>
                         </Tr>
                       )
                     )}

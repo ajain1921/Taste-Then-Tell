@@ -66,7 +66,7 @@ const Home = () => {
           </Button>
           <Text fontSize="md">
             Don't have an account? Sign up{" "}
-            <Link to="/hi">
+            <Link to="/signup">
               <u>here</u>
             </Link>{" "}
           </Text>
