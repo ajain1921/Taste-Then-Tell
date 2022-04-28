@@ -46,16 +46,20 @@ const PersonalReviews = () => {
   const [editedFeedback, setEditedFeedback] = useState(null);
   const [refresh, setRefresh] = useState(null);
 
+  console.log("ACTUAL REVIEWS: ", userReviews);
   useEffect(() => {
     const fetchData = async () => {
       const res = await instance.get(
         `/reviews/user_reviews/${user.email}/${user.password}`
       );
-      setUserReviews(res.data.result[0]);
-      console.log(res.data.result[0]);
+      console.log("USER REVIEWS", res.data.result[0]);
+      const userReviews = res.data.result[0].filter(
+        (review) => !Object.values(review).some((r) => r === null)
+      );
+      setUserReviews(userReviews);
     };
     fetchData();
-  }, [refresh]);
+  }, [refresh, user.email, user.password]);
 
   const editReview = async () => {
     const bodyRating = {
@@ -95,7 +99,7 @@ const PersonalReviews = () => {
               <Tr>
                 <Th>Item</Th>
                 <Th>Dining Hall</Th>
-                <Th w="20px" isNumeric>
+                <Th w="10px" isNumeric>
                   Rating
                 </Th>
                 <Th>Reviews</Th>
@@ -139,7 +143,7 @@ const PersonalReviews = () => {
                     </Text>
                   </Td>
                   <Td>
-                    <Text isTruncated w="300px">
+                    <Text isTruncated w="200px">
                       {userReviews.dining_hall_name}
                     </Text>
                   </Td>
