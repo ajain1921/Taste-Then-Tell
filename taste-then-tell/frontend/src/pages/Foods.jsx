@@ -1,10 +1,12 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
+  Button,
   Center,
   Flex,
   Input,
   InputGroup,
   InputLeftElement,
+  Link,
   Table,
   TableCaption,
   TableContainer,
@@ -23,6 +25,21 @@ import { instance } from "../api";
 const Foods = () => {
   const navigate = useNavigate();
   const [foods, setFoods] = useState([]);
+  const [randomFood, setRandomFood] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await instance.get("foods/get_random/food_id");
+      setRandomFood(res.data.result[0]);
+      console.log(res.data.result[0]);
+    };
+    fetchData();
+  }, []);
+
+  const getRandomLink = async () => {
+    return `/foods/${randomFood.food_id}`;
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await instance.get("/foods");
@@ -40,7 +57,16 @@ const Foods = () => {
 
   console.log(foods);
   return (
-    <Center m="auto" direction={"row"} align={"center"} pt="30px">
+    <Center
+      m="auto"
+      direction={"row"}
+      align={"center"}
+      pt="30px"
+      flexDir="column"
+    >
+      <Link mb={3} href={`/foods/${randomFood.food_id}`}>
+        Surprise me!
+      </Link>
       <VStack spacing="5" w="60%">
         <InputGroup>
           <InputLeftElement

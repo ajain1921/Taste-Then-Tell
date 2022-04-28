@@ -48,7 +48,6 @@ export const Navbar = () => {
                 <NavLink path="/foods" title="Foods" />
                 <NavLink path="/universities" title="Universities" />
                 <NavLink path="/dininghalls" title="Dining Halls" />
-                {/* <NavLink path="/foods" title="Surprise me!" /> */}
               </>
             )}
             <Button onClick={toggleColorMode}>
