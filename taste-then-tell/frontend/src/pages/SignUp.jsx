@@ -97,6 +97,7 @@ const SignUp = () => {
             <Input
               placeholder="Password"
               size="sm"
+              type="password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </Stack>
