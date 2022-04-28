@@ -73,7 +73,7 @@ LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-Al
 DROP TABLE IF EXISTS `Students`;
 
 CREATE TABLE Students (
-    user_id INT PRIMARY KEY,
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
     university_id INT,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -88,7 +88,7 @@ LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-Al
 DROP TABLE IF EXISTS `Reviews`;
 
 CREATE TABLE Reviews (
-    review_id INT PRIMARY KEY,
+    review_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     food_id INT,
     dining_hall_id INT,
@@ -134,6 +134,134 @@ DROP TABLE IF EXISTS `Profanity`;
 CREATE TABLE Profanity (word VARCHAR(100)) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
 LOAD DATA LOCAL INFILE '/Users/Aditya/Documents/uiuc/cs411/sp22-cs411-team050-AlawiniDiYi/db/csv/profanity.csv' INTO TABLE Profanity FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;
+
+CREATE TRIGGER word_check_update BEFORE
+UPDATE
+    ON Reviews FOR EACH ROW BEGIN IF (
+        SELECT
+            COUNT(*)
+        FROM
+            Profanity
+        WHERE
+            LOCATE(word, NEW.feedback) > 0
+    ) > 0 THEN
+SET
+    NEW.contains_profanity = TRUE;
+
+ELSE
+SET
+    NEW.contains_profanity = FALSE;
+
+END IF;
+
+END;
+
+CREATE TRIGGER word_check_insert BEFORE
+INSERT
+    ON Reviews FOR EACH ROW BEGIN IF (
+        SELECT
+            COUNT(*)
+        FROM
+            Profanity
+        WHERE
+            LOCATE(word, NEW.feedback) > 0
+    ) > 0 THEN
+SET
+    NEW.contains_profanity = TRUE;
+
+ELSE
+SET
+    NEW.contains_profanity = FALSE;
+
+END IF;
+
+END;
+
+CREATE DEFINER = `root` @`%` PROCEDURE `getYourReviews`(
+    IN user_email VARCHAR(255),
+    IN user_password VARCHAR(50)
+) BEGIN DECLARE finished INT DEFAULT 0;
+
+DECLARE reviewID INT;
+
+DECLARE userID INT;
+
+DECLARE foodID INT;
+
+DECLARE diningHallID INT;
+
+DECLARE userRating DOUBLE;
+
+DECLARE userFeedback VARCHAR(255);
+
+DECLARE userContainsProfanity BOOLEAN;
+
+DECLARE cur CURSOR FOR
+SELECT
+    *
+FROM
+    Reviews
+WHERE
+    user_id = (
+        SELECT
+            user_id
+        FROM
+            Students
+        WHERE
+            Students.email = user_email
+            AND Students.password = user_password
+    );
+
+DECLARE CONTINUE HANDLER FOR NOT FOUND
+SET
+    finished = 1;
+
+DROP TABLE IF EXISTS user_reviews;
+
+CREATE TABLE user_reviews(
+    review_id INT,
+    user_id INT,
+    food_id INT,
+    dining_hall_id INT,
+    rating DOUBLE,
+    feedback VARCHAR(255),
+    contains_profanity BOOLEAN
+);
+
+OPEN cur;
+
+REPEAT FETCH cur INTO reviewID,
+userID,
+foodID,
+diningHallID,
+userRating,
+userFeedback,
+userContainsProfanity;
+
+INSERT INTO
+    user_reviews
+VALUES
+    (
+        reviewID,
+        userID,
+        foodID,
+        diningHallID,
+        userRating,
+        userFeedback,
+        userContainsProfanity
+    );
+
+UNTIL finished
+END REPEAT;
+
+CLOSE cur;
+
+SELECT
+    *
+FROM
+    user_reviews;
+
+END;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */
 ;
