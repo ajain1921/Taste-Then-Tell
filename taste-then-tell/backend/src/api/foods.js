@@ -139,4 +139,25 @@ router.get(
   }),
 );
 
+/* endpoint to get a random food_id from the database */
+router.get(
+  '/get_random/food_id',
+  errorWrap(async (req, res) => {
+    const QUERY = `SELECT food_id FROM Foods ORDER BY RAND() LIMIT 1`;
+
+    db.query(QUERY, (err, results) => {
+      if (err) {
+        return res.send(err);
+      }
+
+      if (results.length > 0) {
+        sendSuccess(res, 'Successfully returned random food_id', results);
+      } else {
+        sendNotFound(res, 'Food not found');
+      }
+    });
+  }),
+);
+
+
 module.exports = router;
