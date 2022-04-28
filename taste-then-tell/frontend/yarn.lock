@@ -8130,6 +8130,11 @@ react-scripts@5.0.0:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-spoiler-tag@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/react-spoiler-tag/-/react-spoiler-tag-1.1.7.tgz#a94e8f9a77ff96da5a5b453f9b87c918fecd6bc5"
+  integrity sha512-Y03w+YhbWNTWGZ/1PQMsIs9hVoDgvVq18fYh1LLksJ0r9HSzRBy8F5fxidV/LF5mzE1whVa3FtuNyA4PyKR1hA==
+
 react-style-singleton@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/react-style-singleton/-/react-style-singleton-2.1.1.tgz#ce7f90b67618be2b6b94902a30aaea152ce52e66"

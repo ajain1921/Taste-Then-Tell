@@ -23,6 +23,7 @@ import { instance } from "../api";
 import { StarOutline, StarRate } from "@mui/icons-material";
 import { DeleteIcon } from "@chakra-ui/icons";
 import { useAuth } from "../contexts/context";
+import { Spoiler } from "react-spoiler-tag";
 
 const FoodItem = () => {
   const [currFood, setCurrFood] = useState([]);
@@ -260,7 +261,12 @@ const FoodItem = () => {
                   </Text>
                 </Flex>
                 <Flex flexDir="column" ml="15px" width="1000px">
-                  {review.feedback}
+                  {review.contains_profanity == 1 && (
+                    <Spoiler text={review.feedback}></Spoiler>
+                  )}
+                  {review.contains_profanity == 0 && (
+                    <Text>{review.feedback}</Text>
+                  )}
                 </Flex>
                 {user.user_id === review.user_id && (
                   <Flex ml="15px" flexDir="column" width="80px">

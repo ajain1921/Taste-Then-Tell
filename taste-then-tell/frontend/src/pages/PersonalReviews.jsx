@@ -33,9 +33,11 @@ import { useAuth } from "../contexts/context";
 import "./Profile.css";
 import { instance } from "../api";
 
+import { Spoiler } from "react-spoiler-tag";
+import "react-spoiler-tag/dist/index.css";
+
 const PersonalReviews = () => {
   const { user } = useAuth();
-  console.log(user);
   const [userReviews, setUserReviews] = useState([]);
 
   const [editModalReviewId, setEditModalReviewId] = useState(null);
@@ -77,6 +79,9 @@ const PersonalReviews = () => {
     setDeleteModalReviewId(null);
     setRefresh(!refresh);
   };
+
+  const truncate = (input) =>
+    input.length > 20 ? `${input.substring(0, 20)}...` : input;
 
   // TODO: refresh on delete?
 
@@ -139,11 +144,24 @@ const PersonalReviews = () => {
                     </Text>
                   </Td>
                   <Td isNumeric>{userReviews.rating.toFixed(0)}</Td>
-                  <Td>
-                    <Text isTruncated w="300px">
-                      {userReviews.feedback}
-                    </Text>
-                  </Td>
+                  {userReviews.contains_profanity == 1 && (
+                    <Td maxW="300px">
+                      <Box maxW="300px">
+                        <Spoiler
+                          text={truncate(userReviews.feedback)}
+                        ></Spoiler>
+                      </Box>
+                    </Td>
+                  )}
+
+                  {!userReviews.contains_profanity && (
+                    <Td>
+                      <Text isTruncated w="300px">
+                        {userReviews.feedback}
+                      </Text>
+                    </Td>
+                  )}
+
                   <Td>
                     <Fragment>
                       <Button
